@@ -1,0 +1,211 @@
+# Wiring Obsidian to Claude
+
+With the goal of creating a "2nd Brain", I downloaded Obsidian in summer of '25 and spent weeks trying to make it work with ChatGPT using n8n and a stack of webhooks. This went very poorly, with ChatGPT even gently suggesting n8n was over my head (ChatGPT was right). In February '26 I installed Claude Desktop and tried again. Chat mode made it work. In March '26 I switched to Code mode and spent the next month building an operating system to outsource the things my ADHD brain does poorly.
+
+Most of that time was spent hitting walls, building inefficient solutions, and constantly rewiring. Below is the setup I landed on, written up so you don't have to repeat my month of usage limits and iteration. Save your hours for your actual work.
+
+## For the human reading this
+
+**Claude Desktop is the app.** Inside it are three modes:
+
+- **Chat**: conversation. You ask, Claude answers.
+- **Cowork**: Claude sees what you're working on and helps in real time.
+- **Code**: Claude does the work itself. Runs commands, edits files, follows protocols like `/start` and `/wrap`, schedules tasks.
+
+All three modes can read and write your Obsidian vault. Only Code mode can run the automation and scheduled tasks covered later in this doc.
+
+**To use this doc:** drop it into Claude Desktop's Code mode and say "do this." Claude reads the instructions below and handles the wiring. You'll click some buttons in Obsidian and paste a config file. That's your part. If something breaks, paste the error back to Claude and keep going.
+
+Two things to know before you start:
+
+- You need Obsidian installed and a vault created. A vault is just a folder of markdown notes that Obsidian reads. If you don't have one, make an empty folder and point Obsidian at it.
+- Some of this needs Node.js and Python. Don't pre-install random versions. Let Claude tell you what's needed.
+
+Below the line is Claude's operating manual. Keep reading only if you're curious.
+
+---
+
+## Setup
+
+You're wiring an Obsidian vault to the human you're talking with so its contents become first-class context in every conversation. The goal is a personal knowledge base you can read, write, query, and reason over without copy-paste.
+
+The build has five layers, each of which has its own failure modes:
+
+1. **Obsidian itself**: the vault and editor
+2. **Plugins inside Obsidian**: Dataview, Smart Connections, MCP Tools, Tasks, Templater
+3. **The Obsidian CLI**: direct vault commands from the shell
+4. **MCP servers**: Claude's protocol for calling tools
+5. **Python hook layer**: automation glue
+
+Build in order. Don't skip ahead. Each layer assumes the previous ones are working. If something breaks at layer 4, don't reinstall layer 2.
+
+### Layer 1: Obsidian and the vault
+
+If the human doesn't have Obsidian, install it from [obsidian.md](https://obsidian.md). Create or open a vault. Remember the absolute path to that folder. You'll need it for every layer after this one.
+
+Record the vault path in CLAUDE.md. If that file doesn't exist, create it. CLAUDE.md is the file Claude Desktop's Code mode loads first at the start of every session. Keep it short and factual: who the human is, what they're working on, what path to use, communication preferences. No ceremony.
+
+### Layer 2: Plugins
+
+In Obsidian, open Settings > Community plugins > Browse. Install these in this order. Turn each one on before installing the next.
+
+- **[Dataview](https://github.com/blacksmithgu/obsidian-dataview)**. SQL-like queries against the vault's markdown files. Treat markdown as a database. Example query, embedded in any note:
+
+  ````
+  ```dataview
+  TASK FROM "Projects"
+  WHERE !completed
+  GROUP BY file.folder
+  ```
+  ````
+
+  That one surfaces every unfinished task in the Projects folder, grouped by subfolder. Dataview is why the human's to-do lists and dashboards stay alive instead of rotting.
+
+- **[Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)**. Parses checkbox lines into a structured task layer so Dataview can see "not done" items reliably.
+- **[Templater](https://github.com/SilentVoid13/Templater)**. Lets note templates execute small scripts. You won't need this on day one. Install it anyway.
+- **[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)**. Runs a local embedding model and gives every note a vector. This is how you run semantic search instead of keyword search. In the plugin settings, pick a local embedding model. `TaylorAI/bge-micro-v2` is a reasonable default: light on memory, good enough for English text.
+- **[MCP Tools](https://github.com/jacksteamdev/obsidian-mcp-tools)**. Pairs an HTTP endpoint inside Obsidian with an MCP server binary that talks to it. This is what makes your Claude-to-Obsidian bridge feel like Obsidian instead of a folder browser. You get resolved wikilinks and rendered metadata.
+
+Skip for now: everything else. You'll find thirty tempting plugins. Ignore them. Come back when you have a real use case.
+
+### Layer 3: The Obsidian Command Line Interface (CLI)
+
+This one hurt. I spent weeks doing MCP gymnastics that the CLI would have replaced in a single command. Enable it on day one.
+
+The CLI ships with current Obsidian versions. Turn it on in Settings > General. The binary lives here:
+
+- Windows: `%LOCALAPPDATA%\Programs\Obsidian\Obsidian.exe`
+- macOS: `/Applications/Obsidian.app/Contents/MacOS/Obsidian`
+- Linux: `/usr/bin/obsidian` or wherever your distro put it
+
+Add that location to your `PATH`, or use the full path in scripts. Verified commands worth knowing on day one:
+
+- `obsidian search query=<text> format=json` runs a vault-wide keyword search and returns JSON
+- `obsidian eval code=<js>` runs JavaScript against the Obsidian API, which is how you reach into plugins like Smart Connections from the outside
+- `obsidian backlinks file=<path>` lists notes that link to the given file
+- `obsidian unresolved verbose format=json` lists every broken wikilink with its source file
+- `obsidian tasks todo format=json` lists every open task across the vault
+
+You can call the CLI from a Python script, a shell script, or directly through a Bash tool. It's faster than spinning up an MCP call for simple reads and searches. Use the CLI for bulk operations. Use the MCP server for interactive editing or when you need Obsidian's rendered view.
+
+### Layer 4: MCP wiring
+
+MCP stands for Model Context Protocol: the open standard for connecting AI models to external tools. Claude Desktop reads MCP server configs from a JSON file:
+
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Linux: `~/.config/Claude/claude_desktop_config.json`
+
+Claude Desktop has to be fully restarted after edits for the changes to take effect.
+
+Here's the minimum config. Replace every placeholder with the human's actual values before saving.
+
+```json
+{
+  "mcpServers": {
+    "obsidian-mcp-tools": {
+      "command": "<PATH_TO_VAULT>\\.obsidian\\plugins\\mcp-tools\\bin\\mcp-server.exe",
+      "env": {
+        "OBSIDIAN_API_KEY": "<YOUR_KEY_FROM_MCP_TOOLS_PLUGIN>"
+      }
+    }
+  }
+}
+```
+
+On macOS or Linux, use forward slashes in the path and drop the `.exe`.
+
+The `OBSIDIAN_API_KEY` is generated the first time the MCP Tools plugin is enabled. Copy it from the plugin's settings panel in Obsidian. It's the handshake between the plugin and the MCP server. If the server can't authenticate, it fails silently. You'll chase wrong paths for an hour before checking the key.
+
+Test the bridge by restarting Claude Desktop and asking for the list of vault files. If you get a list back, it works. If you get "no response" or "server not connected," check three things in order: the `mcp-server.exe` path is right, the API key matches what's in the plugin, Obsidian is actually running. The plugin needs a live Obsidian window to respond.
+
+**One tool to skip.** Do not install Chrome MCP. It's structurally broken on many systems as of this writing and the fix has been outstanding for months. Use Playwright through a Bash tool if you need browser automation. Chrome MCP will eat time the human doesn't have.
+
+Optional additions, once the Obsidian bridge is solid:
+
+- **Discord MCP** if the human runs a server and wants you in it
+- **Supadata MCP** or similar for web scraping and YouTube transcripts
+- **Gmail and Google Calendar MCP** for email and schedule awareness
+
+Add these one at a time. Verify each one works before adding the next. Never batch-install MCP servers and hope they all come up.
+
+### Layer 5: Python hook layer
+
+The Python hook layer is what turns an editor with plugins into an operating system. Hooks are short Python scripts that fire on events Claude Desktop's Code mode emits: `SessionStart`, `Stop`, `PreToolUse`, and others. They let you inject context, check state, and automate the glue between sessions.
+
+A minimal `SessionStart` hook looks like this:
+
+```python
+# hook_date_injection.py
+# Injects today's date so Claude isn't stuck on its training cutoff.
+from datetime import date
+print(f"Today's date is {date.today().isoformat()}.")
+```
+
+Register it in `.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      { "type": "command", "command": "python path/to/hook_date_injection.py" }
+    ]
+  }
+}
+```
+
+Start with one hook. Confirm it fires. Then add more. The ones I actually use every day: date injection, a session audit check, a coherence monitor, and a `Stop` hook that reminds the human to run `/wrap` before closing.
+
+## Operation
+
+Once all five layers are up, the rest is operating procedure. These are the rules I settled on after a month of mistakes.
+
+### Semantic search versus keyword search
+
+When the human asks "find notes about X," decide which kind of search to run before running anything. Use keyword search (the CLI's `search` command or ripgrep against the vault folder) when X is a specific string, name, or technical term. Use semantic search (Smart Connections) when X is a theme, concept, or vibe. "Notes containing the literal word 'webhook'" is keyword. "Notes about why projects stall" is semantic. Running the wrong one wastes the human's time and yours.
+
+Semantic search is most useful for cross-domain connections: the side project note that unexpectedly relates to a work decision from months earlier.
+
+### Cross-domain filtering
+
+Wrap the Smart Connections call in a helper and have it exclude results from the same top-level folder as the source file. That surfaces what the human would miss. Run it once a week as part of a review cadence and you'll find connections the human didn't know existed.
+
+### Memory pattern
+
+Maintain long-term memory as a set of short, topic-scoped markdown files in `.claude/memory/`, indexed by a single `MEMORY.md` file at the root of that folder. The index is one line per memory, under 150 characters each: `- [Title](file.md) - one-line hook`. When you learn something worth remembering, update an existing file if it fits, or create a new one and add it to the index. Keep `MEMORY.md` as an index only. Paragraphs belong in the referenced files.
+
+Memory types worth distinguishing: user (who the human is), feedback (corrections and preferences), project (active work and context), reference (pointers to external systems). Each memory file carries frontmatter with a `type` field so you can filter later.
+
+### CLAUDE.md conventions
+
+CLAUDE.md (the file Claude Desktop's Code mode loads at the start of every session) is the one file you can always rely on being present. Keep it short, factual, and current. Point to what matters: who the human is, what the vault contains, how to behave, where to find deeper protocols when they're needed. Load the deeper protocols on demand. Token budget is real.
+
+### Compute cost across the stack
+
+You have four ways to reach the vault: the Read tool (raw file system), the Obsidian CLI (via Bash), Smart Connections (via CLI eval), and the Obsidian MCP server. They are not priced the same.
+
+- **Raw file read (Read tool).** Cheapest. Use for known paths. No protocol overhead, no schema to load.
+- **Obsidian CLI via Bash.** Light. Shell exec, JSON out. Best for keyword search, listings, backlinks, unresolved links. The Bash tool schema is already loaded.
+- **Smart Connections semantic query.** Mid. Runs through the CLI's `eval` command, which calls into the plugin. Worth it for cross-domain connections. Not worth it for a keyword hit.
+- **Obsidian MCP server.** Heaviest, and the cost hits before you use it. Most MCP servers load all their tool schemas into context at the start of the conversation, whether or not you call any of them. Ten servers at ten tools each is a lot of tokens spent before the first message. Use the MCP server when you need Obsidian's rendered view: resolved wikilinks, structured frontmatter, internal awareness the CLI can't give you.
+
+Rule of thumb: raw reads for known paths, CLI for search and listings, Smart Connections for semantic work, MCP server only when you need the rendered view. Fewer MCP servers means more headroom for actual content.
+
+## Troubleshooting
+
+When the wiring fails, the culprit is usually one of four things:
+
+1. Obsidian isn't running (the MCP plugin needs a live app)
+2. Path separators are wrong on Windows (JSON needs double backslashes)
+3. The API key was regenerated and the config wasn't updated
+4. Node or Python version is wrong for the MCP server you installed
+
+Restart the app, check the path, check the key, check the version. That's almost always it.
+
+## What this doc doesn't cover
+
+This gets you a wired vault. It doesn't cover how to live inside it. Session lifecycle, capture inbox, audit cadence, operating rules: those are a separate problem and deserve their own doc. Wire first, then design. The patterns I settled on are coming in a follow-up post.
+
+---
+
+That was mine. Yours will be different. Don't copy the setup. Get past the setup and onto the work you actually care about.
