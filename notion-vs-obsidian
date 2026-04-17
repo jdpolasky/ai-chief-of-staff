@@ -1,0 +1,74 @@
+# Notion or Obsidian for an AI Chief of Staff?
+
+When people react to the Chief of Staff system I built with Claude + Obsidian, Notion is often brought up. Can they do the same thing in Notion? What are the pros/cons?
+
+It's a fair question and deserves a careful answer. I spent months building the Obsidian version. Before writing this I spent some time inside Notion, ran its AI through a battery of prompts, read the documentation, the changelogs, and the user complaints. Here is what I found.
+
+## The requirements, before the comparison
+
+A Claude-powered Chief of Staff is not a note-taking app. It is a memory layer the model can read, write, and extend across sessions. The requirements are narrow:
+
+- A place your model can read from and write to, on demand, with no intermediary
+- Context that persists and compounds rather than resetting each session
+- Capture fast enough not to interrupt your actual work
+- A structure the model can navigate without being re-taught every time
+
+Both tools clear this bar. They differ in two places: what it costs to get there, and what the AI can do once it arrives.
+
+## Where Notion is better
+
+Real-time collaboration. If more than one person needs to live inside the same system, Notion is the only serious option between the two. Obsidian is single-player by design. Shared-vault workarounds produce merge conflicts the moment two people touch the same file.
+
+Time to first working system. Notion works the instant you sign up. Obsidian rewards setup and punishes impatience. The system in this repo took months to build. That's the price of the power Obsidian offers.
+
+Mobile. Notion's mobile app is a finished product. Obsidian's is a capable tool that expects you to know what you're doing.
+
+Structured data. Notion has had a decade to refine database views: table, board, calendar, timeline, gallery, list. Obsidian's Bases feature is maturing but early.
+
+Templates. Notion's marketplace is centralized and polished. Obsidian's equivalents are scattered across GitHub and forums. The usual tradeoff between curation and openness.
+
+## Where the comparison stops being close
+
+A Chief of Staff is a cross-referencing machine. Its value lives in the synthesis across session logs, task lists, meeting notes, and strategic context. That's exactly where Notion AI is weakest.
+
+The most cited complaint on Notion's subreddit is a structural description, not a nitpick. Notion AI does not know your workspace. It searches it. Accuracy holds up when the answer is on a single page and drops noticeably when the model has to pull across multiple. Retrieval over a subset of pages is not the same as full context.
+
+Claude reading an Obsidian vault is a different kind of operation. It doesn't search-and-rank. It reads files directly through MCP, follows the links between them, and holds what it pulls in full context. The ceiling is the context window, not a retrieval score. The distinction is invisible on small questions and decisive on the ones a Chief of Staff is meant to answer.
+
+## The middle option most people overlook
+
+Notion and Anthropic have a formal partnership. Inside Notion 3.2, you can select Claude Opus 4.7 as your model, alongside GPT-5.2 and Gemini 3, and assign tasks to Claude directly from a Notion task board.
+
+At the Business tier, eighteen dollars per user per month puts Claude behind Notion's interface, subject to Notion's workspace-search layer. Twenty dollars a month puts Claude directly on your files with no intermediary.
+
+Notion wraps Claude with collaborative pages, structured databases, and shared editing. If you need that, the premium is reasonable. For a solo operator, you're paying for a wrapper that strips out what Claude can otherwise do.
+
+## The architecture I would recommend to most consultants
+
+Running this system long enough clarifies something most comparisons miss. Notion and Obsidian answer different questions, and they are complementary.
+
+Obsidian for the personal layer: memory files, session logs, tasks, strategic thinking, decision history. Local, plain-text, yours. Claude lives here and writes here.
+
+Notion for the shared layer: client workspaces, collaborative documents, team materials. Claude reaches into it through the Notion MCP connector, the same way it reads the vault.
+
+One model, two data sources, one coherent Chief of Staff. This is what I'd suggest to most consultants and small teams, and it's nearly absent from public writing on AI-assisted work because almost nobody has built it end to end.
+
+## Recommendations
+
+If you need something working this week, use Notion. Install the Notion MCP connector. Good enough for most people, running in an afternoon.
+
+If you're building a long-term personal system and have time to invest, use Obsidian. The up-front cost is real. The payoff is a knowledge base that compounds, lives on your hardware, and gives the model full context every session.
+
+If you serve clients or run a small team, use both. Personal layer in Obsidian, team layer in Notion, Claude bridging them.
+
+If you're already deep in Notion, stay there and install the connector. Migration is painful and rarely worth it unless the synthesis problem is costing you real time.
+
+If privacy is the whole point (regulated data, client confidentiality, air-gapped work), Obsidian with a local model via Ollama is the only serious option.
+
+The short version: Notion is a better tool for working with other people, and Obsidian is a better tool for thinking with a model. For a personal AI Chief of Staff, the question reduces to whether you want your AI to search your system or know it.
+
+---
+
+*For the full analysis, pricing, business model, privacy architecture, migration cost, and the live test results, see [notion-vs-obsidian-deep](notion-vs-obsidian-deep).*
+
+*The rest of the system is at [github.com/jdpolasky/ai-chief-of-staff](https://github.com/jdpolasky/ai-chief-of-staff). Conversation continues on [TikTok](https://www.tiktok.com/@chasinggnosis) and in the [Discord](https://discord.gg/YhhpMNtj4r).*
