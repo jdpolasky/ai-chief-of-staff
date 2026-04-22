@@ -1,19 +1,35 @@
-# AI Chief of Staff
+# Chief of Staff
 
-This is the first in a series of posts documenting the system I built in March 2026: a personal operating system running on Claude Code and an Obsidian vault, designed as an ADHD prosthetic.
+A Chief of Staff built on Claude Code and an Obsidian vault. Designed as an ADHD prosthetic.
 
-## Notion or Obsidian?
+Every new conversation with a model starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. This repo is a personal operating system to end that. A vault of markdown files, a handful of slash commands, and a memory layer that persists between sessions. The model reads the vault at session start and hands you back an assistant that already knows who and where you are.
 
-The question I get most: could you build this in Notion? A careful answer, from someone who built the Obsidian version and spent real time inside Notion.
+It's one of at least ten open-source implementations of the same pattern all posted in the last month. The code can be copied from any of them. What can't be copied is what's around it: a non-coder with ADHD built this one for non-coders with ADHD, and lived in it for over a hundred sessions against real paying client work and a public platform build. The rules in this system were learned. None of them are theoretical.
 
-**[`notion-vs-obsidian`](notion-vs-obsidian)**: the short version. Where each tool wins, where the comparison stops being close, and the hybrid architecture most people overlook.
+## The loop
 
-**[`notion-vs-obsidian-deep`](notion-vs-obsidian-deep)**: the full analysis. Pricing, business model, privacy, migration cost, and the ecosystem picture.
+Four commands. One runs once. The other three cycle every session.
 
-## The setup
+- **`/setup`**. Conversational wizard. Asks about you, your lanes, how you stall, what has actually helped you before. Generates `CLAUDE.md`, vault files, and memory.
+- **`/start`**. Morning briefing. Reads the Command Center and the To-Do List. Delivers Must / Should / Could. Flags overdue follow-ups.
+- **`/sync`**. Mid-session checkpoint. Saves what matters to memory. Optional.
+- **`/wrap`**. End of session. Reflects wins. Updates the Command Center. Queues what is open for next time.
 
-**[`obsidian-setup`](obsidian-setup)**: how to wire Obsidian to Claude Desktop. Plugins, MCP servers, the Python hook layer. Paste it into Claude Code and say "do this."
+## What's here now
 
-## More coming
+This repo currently ships the docs and the architecture writeup. The full template is staged locally and will push next, once a clean-install test has actually been run. Shipping a broken install is worse than waiting a week. That gate has not closed yet.
 
-The full system is being documented for release: CLAUDE.md, memory structure, session commands, vault template. Follow [@jdpolasky](https://github.com/jdpolasky) on GitHub or [@chasinggnosis](https://tiktok.com/@chasinggnosis) on TikTok.
+Today you can read:
+
+- [`ARCHITECTURE.md`](ARCHITECTURE.md). The longer writeup. The loop, the memory model, the operating rules, the design choices. Start here if you want the system explained before you build your own.
+- [`obsidian-setup`](obsidian-setup). Step by step wiring guide for Obsidian, MCP servers, plugins, the hook layer. Plain English. No coding background assumed. Paste it into Claude and say do this.
+- [`notion-vs-obsidian`](notion-vs-obsidian). Short editorial on why the vault is Obsidian and not Notion. Two paragraphs.
+- [`notion-vs-obsidian-deep`](notion-vs-obsidian-deep). The long version. Specifications, pricing, lock-in analysis, recovery stories.
+
+## Who this is for
+
+If you have ADHD, this operating system was built for you. If you don't, it still works just fine. 
+
+## License
+
+MIT.
