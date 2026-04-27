@@ -1,8 +1,8 @@
 # Architecture
 
-Every new conversation with a model starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. Minutes are spent at the top of every session re-priming a model on a conversation you already had.
+Every new conversation with a model starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. Time and focus are spent at the top of every session re-priming a model on a conversation you already had.
 
-This repo is a personal operating system to end that. A vault of markdown files, a handful of slash commands, and a memory layer that persists between sessions. It runs on your own machine against your own notes. The model reads the vault at session start and hands you back an assistant that already knows who and where you are.
+This repo is a personal operating system to end that. A vault of markdown files, a handful of slash commands, and a memory layer that persists between sessions. The underlying pattern is retrieval-augmented generation (RAG) over a local vault. It runs on your own machine against your own notes. The model reads the vault at session start and hands you back an assistant that already knows who and where you are.
 
 Chief of Staff is the role the model plays once the OS is live. It triages, tracks, briefs, learns, and catches things before they fall.
 
@@ -10,11 +10,11 @@ Chief of Staff is the role the model plays once the OS is live. It triages, trac
 
 The short version is the [README](README.md). This is the longer version for readers who want to see the bones before or after they run `/setup`. It covers the loop, the memory model, the operating rules, and the design choices. It's not a user guide. It won't tell you which button to click. It will tell you what's happening when you do.
 
-The template files described below aren't in this repo yet. See the README for what's live today.
+For current repo contents and install status, see the [README](README.md).
 
 ## Who this is for
 
-Built by a non-coder with ADHD, for a non-coder with ADHD. The distraction pattern is familiar, discouraging, and drains your life. You lose focus, you forget things, time-blindness degrades your ability to function efficiently. Re-calibration takes longer than it should. The small failures add up and turn into shame. Every operating rule here responds to that, none are theoretical.
+Built by a non-coder with ADHD, for a non-coder with ADHD. The distraction pattern is familiar, discouraging, and drains your life. You lose focus, you forget things, and time-blindness degrades your ability to function efficiently. Re-calibration takes longer than it should. The small failures add up and turn into shame. Every operating rule here responds to that, none are theoretical.
 
 If you don't have ADHD, this scaffolding will still work great. It was just designed for harder cases than you.
 
@@ -36,7 +36,7 @@ Runs once. It's closer to an intake interview than an installer. Asks about you,
 
 Opens every session. Reads the Command Center and the To-Do List, and if Gmail and Calendar are wired in it reads those too. Hands you a Must / Should / Could briefing and flags anything you are waiting on that has gone stale. Ends with an invitation, not an assignment.
 
-The minutes at the top of every session you used to lose re-priming a fresh model are draining your precious executive function. A good briefing ends that, and you know where you are before you've written a word.
+You used to lose minutes at the top of every session re-priming a fresh model. Those minutes drain executive function you can't afford. A good briefing ends that, and you know where you are before you've written a word.
 
 ### `/sync`
 
@@ -44,9 +44,11 @@ Mid-session checkpoint. Optional. Saves to memory, updates the Command Center or
 
 ### `/wrap`
 
-Closes every session. Reflects back what got done. Saves to memory. Updates the Command Center date. Queues open threads for next time. Rotates stale memory entries out so the next `/start` isn't reading yesterday.
+Closes every session. Reflects back what got done. Saves to memory. Updates the Command Center date. Queues open threads for next time.
 
 `/wrap` is the command that pays the future version of you.
+
+For each command's wiring, see [`docs/protocols.md`](docs/protocols.md). That doc covers what each command reads and writes, failure modes, and the state files behind them.
 
 ## Memory architecture
 
@@ -64,15 +66,19 @@ The narrative record. Append-only. Written during `/wrap`. Rarely loaded back in
 
 Claude's persistent memory across sessions. A handful of short markdown files: who you are, what you prefer, what you're working on, what happened recently. Claude reads these at the start of every session. Without them the model meets you new every time. That's how every LLM session works by default. This tier is what breaks the pattern. A file called `MEMORY.md` sits at the top as an index, pointing at the rest.
 
+For the full memory model, see [`docs/memory.md`](docs/memory.md). That doc covers the four types, frontmatter schema, decay and provenance, and the firings log.
+
 ## `CLAUDE.md`: the operating instructions
 
 Claude Code loads `CLAUDE.md` at the start of every session. This is where your preferences, your verification rules, your operating constraints live. `/setup` writes the first version. You edit it over time as rules surface from real work.
 
 Treat `CLAUDE.md` as a running instruction set, not documentation. Rules go in, they take effect on the next session, they compound. If the model keeps doing something you don't want, write a rule. If the rule holds for a week, it stays. If it doesn't, cut it. The file is the shortest path from a moment of friction to a durable change in behavior.
 
+The mechanism that turns those frictions into durable behavior is covered in [`docs/feedback-loop.md`](docs/feedback-loop.md).
+
 ## Operating principles
 
-Three rules do most of the work.
+A handful of rules do most of the work. Three stand out here. For the `CLAUDE.md`-layer Laws and how each one emerged, see [`docs/laws.md`](docs/laws.md).
 
 ### The Operating Constraint
 
@@ -96,13 +102,13 @@ An ADHD prosthetic has to work this way to be useful. Financial pressure trigger
 
 Claude Code exposes the seams of the session. Session start, before a tool call, after a tool call, on stop, before compaction. You hang scripts on those seams. That's the hook layer.
 
-The template ships an empty `scripts/hooks/` directory. Hooks are optional. The base system runs without them. They are where the system bends to your work. Inject today's date at session start. Remind yourself to `/wrap` before closing the terminal. Flag memory files nobody has touched in a month. Scrub private strings before anything goes public. The template ships none of these. Write the ones you need.
+Hooks are optional. The base system runs without them. They are where the system bends to your work. Inject today's date at session start. Remind yourself to `/wrap` before closing the terminal. Flag memory files nobody has touched in a month. Scrub private strings before anything goes public. The template ships none of these. Write the ones you need.
 
 Hooks can be any executable. Python is common.
 
 ## MCP integration
 
-One MCP is required. [Obsidian MCP](obsidian-setup), because without it the system cannot reach the vault and `/start` has nothing to read.
+One MCP is required. [Obsidian MCP](docs/obsidian-setup.md), because without it the system cannot reach the vault and `/start` has nothing to read.
 
 The rest are optional. Gmail surfaces unread threads during `/start`. Google Calendar surfaces today's meetings. Google Drive pulls linked docs into sessions. Wire in whatever else you want.
 
@@ -146,26 +152,59 @@ The default set is a floor, not a ceiling. Add files as needs expand. Update `ME
 
 ### New hooks
 
-Any event Claude Code exposes is a hook point. Add a script to `scripts/hooks/`. Register it in `settings.json`. The hook fires.
+Any event Claude Code exposes is a hook point. Add a script to `scripts/hooks/`. Register it in `.claude/settings.json`. The hook fires.
+
+The template ships `settings.json` empty (`{}`). A minimal example that runs a Python script at session start:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      { "type": "command", "command": "python scripts/hooks/inject_date.py" }
+    ]
+  }
+}
+```
+
+See [`docs/obsidian-setup.md`](docs/obsidian-setup.md) Layer 5 for more examples and the events Claude Code exposes.
+
+## Technical: the `_system/` folder
+
+The user-visible files in your vault — `Command Center.md` and `To-Do.md` — are deliberately clean. Plain markdown, no YAML frontmatter, no embedded query blocks. You read them every day; they have to be readable.
+
+State the system needs lives behind that, in `_system/` at the vault root. You can ignore this folder until you want to know how the machinery works.
+
+Four files ship there:
+
+- **`last_session.md`.** Frontmatter holds the session counter (`session: N`) and the date of the last `/wrap`. Body holds the recap and open-threads list. `/start` reads this for re-entry detection. `/wrap` overwrites it.
+- **`hot.md`.** One paragraph of in-progress context overwritten by every `/wrap`. Deliberately low-fidelity. `/start` reads it to recover where you left off.
+- **`Session Log.md`.** Append-only narrative. One block per `/wrap`. Rarely loaded back into the model. Exists for pattern analysis and so future-you can audit past-you.
+- **`memory_firings.log`.** One line per memory that actually shaped a response in a session. `/wrap` appends. `/audit` reads, once enough sessions accumulate. See [`docs/memory.md`](docs/memory.md) for the bootstrap-gate detail.
+
+The split is the design. Anything you read every day is in the user-facing files. Anything the machinery needs is in `_system/`. Swap the slash commands for different ones, or extract `/wrap` Phase 1 into a Python script — the shape doesn't change as long as the two layers stay separate.
+
+If you want to grow the user-facing side toward the elaborated patterns described in [`docs/protocols.md`](docs/protocols.md) — frontmatter on Command Center, inline `#waiting` tags with a Dataview aggregation, custom skills like `/audit` extended with your own checks — that's the path. None of it is required. The simple shipped state runs the loop.
 
 ## Lineage
 
-Fall 2025. My first attempt at this was ChatGPT, Obsidian, and n8n. I got close enough to see the shape, but was way over my head using n8n and couldn't attach ChatGPT to Obsidian.
+This started in early 2024 with me building and using custom GPTs. They were a step forward from the standard chat, but for any serious use they were weak and drifted easily. They needed more memory and more readily available context. I wanted a "2nd Brain," a functional assistant that remembered everything. My research uncovered Obsidian, which I liked because it could all stay on my machine, no cloud. The local-only constraint came first and never moved. Every architectural choice since has filtered through it.
 
-Early March 2026. I started again. I'm not a coder at all but now I had Claude Code (desktop). I made rapid progress.
+By late summer 2025 I had a name for the pattern I was reaching for: RAG. RAG, Retrieval-Augmented Generation, is the canonical name for what this whole system does. Store knowledge locally and let the model query it on demand. Ground every answer in your own notes instead of the model's general training. By September 2025 I'd evolved a playbook: save chats to Obsidian then cut/paste them into ChatGPT to provide context. This worked but was clunky. The problem was tooling, I couldn't bring it all together. I tried using n8n to connect ChatGPT to Obsidian, but was way over my head and ChatGPT couldn't walk me through it. Node names changed under me, webhooks failed, and file paths broke, I was just flailing around. So, I stayed in custom GPTs and kept pasting in markdown files for context. 
 
-April 3, 2026. Andrej Karpathy posted a gist titled "LLM Wiki." A hundred articles, four hundred thousand words, maintained by a model inside a markdown folder. It went viral on X. My quest was validated!
+One of my GPTs was a therapist and it exceeded my expectations. I made it Internal Family Systems (IFS) and somatics flavored, ADHD-aware. It uncovered patterns and insights human therapists hadn't. It was the first time any of this technology felt like it was actually in the room with me.
 
-Second brain literature goes back a decade. Roam Research and Obsidian proved plain text plus bidirectional links could hold a lifetime of thought. My own IFS therapy produced the language the operating principles borrow from. Every ADHD-having professional I have ever met has been building a private system out of sticky notes and calendar apps and prayer, because the off-the-shelf tools never fit.
+In early 2026 I came back to the 2nd Brain problem, this time in Claude Code. I have zero coding background, but with Claude that didn't matter. I was able to attach Obsidian and make it function smoothly as extended memory. I moved the therapist over from GPT and with the vault attached it worked even better. Everything else evolved out of that: the Command Center, the Chief of Staff role, the memory tier, and the Laws. The nervous-system-aware framing in the operating principles comes from a skill that was already running against my actual life.
 
-Between Karpathy's post and this document, at least ten open-source implementations of the same basic pattern have shipped. That's a good sign. Markdown + a language model is now a serious substrate for personal operating systems. It's becoming popular because it's badly needed and so damn helpful.
+In early April 2026 Andrej Karpathy posted a gist titled "LLM Wiki", a markdown folder maintained by a model, framed as a personal knowledge base written for an LLM reader. It went viral on X. My quest had been validated.
 
-This repo is one of those implementations. A non-coder with ADHD built it for non-coders with ADHD. It's been lived in for over a hundred sessions against real paying client work and a public platform build. The code can be copied. The rest cannot. The rules in this document were learned. None of them are theoretical.
+Between Karpathy's post and this document, multiple open-source implementations of the same basic pattern have shipped. A partial list: Jereme Strange's [ADAM Framework](https://github.com/ajsupplycollc/Adam) (MIT-licensed, five layers, closest architectural cousin to this one, and the source of two adapted scripts in my local setup; full credit in [CREDITS.md](CREDITS.md)), Caleb Peavy's [`unmutable/ai-chief-of-staff`](https://github.com/unmutable/ai-chief-of-staff) (which shares this repo's name and deserves the namespace nod), [`kbanc85/claudia`](https://github.com/kbanc85/claudia), MemPalace, and the earlier Hermes Agent work from Nous Research. That's a good sign. Markdown plus a language model is now a serious substrate for personal operating systems. The pattern is becoming popular because it's badly needed and so damn helpful.
 
-Yours should be different. Start with this one. Keep what works. Cut what does not.
+This repo is one of those implementations, built by a non-coder with ADHD for non-coders with ADHD. It's been lived in for over a hundred sessions against real paying client work and a public platform build. Every rule in this document came out of that work. Nothing here is theoretical.
+
+Your Chief of Staff should be different. Start with this one. Keep what works and cut what doesn't. The code can be copied but the rest cannot, it must grow toward your specific psyche. 
 
 ## Where to go next
 
 Back to the [README](README.md) for the short version.
 
-Into [`obsidian-setup`](obsidian-setup) for the practical wiring guide.
+Into [`docs/obsidian-setup.md`](docs/obsidian-setup.md) for the practical wiring guide.

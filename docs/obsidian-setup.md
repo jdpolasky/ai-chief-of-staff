@@ -119,7 +119,7 @@ The `OBSIDIAN_API_KEY` is generated the first time the MCP Tools plugin is enabl
 
 Test the bridge by restarting Claude Desktop and asking for the list of vault files. If you get a list back, it works. If you get "no response" or "server not connected," check three things in order: the `mcp-server.exe` path is right, the API key matches what's in the plugin, Obsidian is actually running. The plugin needs a live Obsidian window to respond.
 
-**One tool to skip.** Do not install Chrome MCP. It's structurally broken on many systems as of this writing and the fix has been outstanding for months. Use Playwright through a Bash tool if you need browser automation. Chrome MCP will eat time the human doesn't have.
+**One tool to skip (as of April 2026).** Do not install Chrome MCP. It's structurally broken on many systems and the fix has been outstanding for months. Use Playwright through a Bash tool if you need browser automation. Chrome MCP will eat time the human doesn't have. Re-check this status before installing if you're reading this much later than April 2026.
 
 Optional additions, once the Obsidian bridge is solid:
 

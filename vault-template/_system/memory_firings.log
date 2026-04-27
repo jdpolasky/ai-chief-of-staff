@@ -1,0 +1,4 @@
+# Memory firings log
+# Append-only. One line per memory that actually shaped a response in a session.
+# Format: YYYY-MM-DD | session_N | filename.md | one-line note
+# /wrap appends to this file. /audit reads it once enough sessions accumulate.
