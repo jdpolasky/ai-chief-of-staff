@@ -50,7 +50,7 @@ Once you have a path, do this in order:
 
 Save the vault path. Everything that belongs in the vault gets written there. The `.claude/` folder stays in the project root where this setup is running.
 
-If they don't have Obsidian installed yet, point them at [`docs/obsidian-setup.md`](../../../docs/obsidian-setup.md) and offer to pause while they set it up. Do not try to install Obsidian for them.
+If they don't have Obsidian installed yet, point them at [`obsidian-setup`](../../../obsidian-setup) and offer to pause while they set it up. Do not try to install Obsidian for them.
 
 ## Step 1: The minimum (four questions)
 

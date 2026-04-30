@@ -1,3 +1,3 @@
 # Place hook scripts here.
-# This folder ships empty on purpose. See ARCHITECTURE.md and docs/obsidian-setup.md
+# This folder ships empty on purpose. See ARCHITECTURE.md and obsidian-setup
 # for what hooks do and how to register them in .claude/settings.json.

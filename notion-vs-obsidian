@@ -1,6 +1,6 @@
 # I Built My AI Chief of Staff on Obsidian, but would Notion work? Here's an Analysis of Obsidian vs Notion.
 
-*Part of the [ai-chief-of-staff](https://github.com/jdpolasky/ai-chief-of-staff) repo. For the full technical analysis with receipts, see [notion-vs-obsidian-deep.md](notion-vs-obsidian-deep.md).*
+*Part of the [ai-chief-of-staff](https://github.com/jdpolasky/ai-chief-of-staff) repo. For the full technical analysis with receipts, see [notion-vs-obsidian-deep](notion-vs-obsidian-deep).*
 
 ---
 
@@ -85,6 +85,6 @@ Personal CoS on Obsidian. Company layer on Notion. Claude bridging both. That's 
 
 ---
 
-For the full analysis, including pricing breakdowns, business model comparison, migration risk, privacy architecture, and the live test results, see [notion-vs-obsidian-deep.md](notion-vs-obsidian-deep.md).
+For the full analysis, including pricing breakdowns, business model comparison, migration risk, privacy architecture, and the live test results, see [notion-vs-obsidian-deep](notion-vs-obsidian-deep).
 
 Questions and pushback welcome. Find me on [TikTok @chasinggnosis](https://www.tiktok.com/@chasinggnosis) or in the [Discord](https://discord.gg/YhhpMNtj4r).

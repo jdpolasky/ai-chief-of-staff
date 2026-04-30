@@ -108,7 +108,7 @@ Hooks can be any executable. Python is common.
 
 ## MCP integration
 
-One MCP is required. [Obsidian MCP](docs/obsidian-setup.md), because without it the system cannot reach the vault and `/start` has nothing to read.
+One MCP is required. [Obsidian MCP](obsidian-setup), because without it the system cannot reach the vault and `/start` has nothing to read.
 
 The rest are optional. Gmail surfaces unread threads during `/start`. Google Calendar surfaces today's meetings. Google Drive pulls linked docs into sessions. Wire in whatever else you want.
 
@@ -166,7 +166,7 @@ The template ships `settings.json` empty (`{}`). A minimal example that runs a P
 }
 ```
 
-See [`docs/obsidian-setup.md`](docs/obsidian-setup.md) Layer 5 for more examples and the events Claude Code exposes.
+See [`obsidian-setup`](obsidian-setup) Layer 5 for more examples and the events Claude Code exposes.
 
 ## Technical: the `_system/` folder
 
@@ -207,4 +207,4 @@ Your Chief of Staff should be different. Start with this one. Keep what works an
 
 Back to the [README](README.md) for the short version.
 
-Into [`docs/obsidian-setup.md`](docs/obsidian-setup.md) for the practical wiring guide.
+Into [`obsidian-setup`](obsidian-setup) for the practical wiring guide.

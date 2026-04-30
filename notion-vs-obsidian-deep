@@ -1,6 +1,6 @@
 # Notion vs Obsidian for an AI Chief of Staff: The Full Analysis
 
-*This is the deep version. For the short read, see [notion-vs-obsidian.md](notion-vs-obsidian.md).*
+*This is the deep version. For the short read, see [notion-vs-obsidian](notion-vs-obsidian).*
 
 *I built a Claude-powered Chief of Staff system on Obsidian over several months. This document is my honest analysis of whether that was the right call, and whether Notion could do the same job. I tested both. I ran Notion AI through live prompts. I read the documentation, the Reddit threads, the changelogs, and the user complaints. I'm going to tell you what I found, including where Obsidian loses.*
 

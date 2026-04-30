@@ -4,6 +4,8 @@
 
 > **Have Claude walk you through it.** If you already have Claude in any form (paid or free, browser or phone), paste this whole README into a Claude conversation and say "walk me through this." Claude reads it back to you in plain English, coaches you through the terminal, and helps when something breaks. The doc was written to work both ways.
 
+> **Just here for the Obsidian setup guide?** Jump straight to [`obsidian-setup`](obsidian-setup). Plain English, no coding background assumed. The Chief of Staff system below is the bigger thing it builds toward, but the guide stands on its own.
+
 A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
 
 Every new conversation with an AI starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. This repo fixes that. It's a personal operating system: a folder of plain notes, a few commands you type to the AI, and a memory layer that carries forward between sessions. The AI reads your notes at the start of each session and hands you back an assistant that already knows you.
@@ -93,15 +95,15 @@ Give it two weeks of real use. Memory accumulates and rules get written down whe
 
 ## Read more
 
+- [`obsidian-setup`](obsidian-setup). Step-by-step guide to wiring up Obsidian and the optional MCP servers (the connectors that let the AI read your email and calendar). Plain English. No coding background assumed. Once you have the system running, paste this file into Claude and say "do this."
 - [`ARCHITECTURE.md`](ARCHITECTURE.md). The longer writeup. The loop, the memory model, the operating rules, the design choices. Read this if you want the system explained before you commit.
-- [`docs/obsidian-setup.md`](docs/obsidian-setup.md). Step-by-step guide to wiring up Obsidian and the optional MCP servers (the connectors that let the AI read your email and calendar). Plain English. No coding background assumed. Once you have the system running, paste this file into Claude and say "do this."
-- [`docs/notion-vs-obsidian.md`](docs/notion-vs-obsidian.md). Short editorial on why this uses Obsidian and not Notion.
-- [`docs/notion-vs-obsidian-deep.md`](docs/notion-vs-obsidian-deep.md). The longer version of the same argument.
+- [`notion-vs-obsidian`](notion-vs-obsidian). Short editorial on why this uses Obsidian and not Notion.
+- [`notion-vs-obsidian-deep`](notion-vs-obsidian-deep). The longer version of the same argument.
 
 A note on jargon: a few technical words show up in the docs. Here's the short version, so they don't slow you down.
 
 - **Vault**: the folder Obsidian uses to hold your notes.
-- **MCP**: short for Model Context Protocol. A way for the AI to read other apps like Gmail and Calendar. Optional. Setup instructions are in `docs/obsidian-setup.md`.
+- **MCP**: short for Model Context Protocol. A way for the AI to read other apps like Gmail and Calendar. Optional. Setup instructions are in [`obsidian-setup`](obsidian-setup).
 - **Slash command**: a message you type to the AI that starts with `/`. The AI treats it as a command, not regular conversation. `/setup`, `/start`, `/sync`, `/wrap` are the four you'll use.
 - **RAG**: short for retrieval-augmented generation. Just means the AI looks at your notes before it answers. That's how the memory works.
 
