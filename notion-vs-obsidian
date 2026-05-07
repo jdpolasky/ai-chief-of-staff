@@ -8,7 +8,7 @@ A common question I get after people hear about my system is, "Can I build this 
 
 The honest answer is sometimes yes, sometimes no, and one architecture nobody's talking about that might be the right answer for most people.
 
-I did analysis on both and here are the results. 
+I did analysis on both and here are the results.
 
 ---
 
@@ -53,7 +53,7 @@ There's also the migration question. If you've built a deep Obsidian system and 
 
 ## The Bombshell Nobody Mentions
 
-Notion officially runs on Claude. Anthropic and Notion have a formal partnership. Notion uses Claude Managed Agents. You can pick Claude Opus 4.5 as your model in Notion 3.2.
+Notion officially runs on Claude. Anthropic and Notion have a formal partnership. Notion uses Claude Managed Agents. You can pick Claude Opus 4.7 as your model in Notion 3.4.
 
 So at the Business tier, you're paying $18 per user per month to access Claude through Notion's interface, with Notion's context limitations on top. Or you pay Claude $20 per month directly, get the full model, and give it access to your entire file system with no intermediary.
 
