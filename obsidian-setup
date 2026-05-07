@@ -64,7 +64,7 @@ In Obsidian, open Settings > Community plugins > Browse. Install these in this o
 - **[Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)**. Parses checkbox lines into a structured task layer so Dataview can see "not done" items reliably.
 - **[Templater](https://github.com/SilentVoid13/Templater)**. Lets note templates execute small scripts. You won't need this on day one. Install it anyway.
 - **[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)**. Runs a local embedding model and gives every note a vector. This is how you run semantic search instead of keyword search. In the plugin settings, pick a local embedding model. `TaylorAI/bge-micro-v2` is a reasonable default: light on memory, good enough for English text.
-- **[MCP Tools](https://github.com/jacksteamdev/obsidian-mcp-tools)**. Pairs an HTTP endpoint inside Obsidian with an MCP server binary that talks to it. This is what makes your Claude-to-Obsidian bridge feel like Obsidian instead of a folder browser. You get resolved wikilinks and rendered metadata.
+- **[MCP Tools](https://github.com/jacksteamdev/obsidian-mcp-tools)**. Pairs an HTTP endpoint inside Obsidian with an MCP server binary that talks to it. This is what makes your Claude-to-Obsidian bridge feel like Obsidian instead of a folder browser. You get resolved wikilinks and rendered metadata. *(Status note as of May 2026: the maintainer announced no further updates, citing supply-chain concerns about the binary distribution model. The current release (0.2.31) is signed via GitHub Actions with SLSA provenance and safe to use. Community-maintained alternatives implementing MCP over HTTP/SSE are in development. Check the project README for current recommendations before installing fresh.)*
 
 Skip for now: everything else. You'll find thirty tempting plugins. Ignore them. Come back when you have a real use case.
 
@@ -72,7 +72,7 @@ Skip for now: everything else. You'll find thirty tempting plugins. Ignore them.
 
 This one hurt. I spent weeks doing MCP gymnastics that the CLI would have replaced in a single command. Enable it on day one.
 
-The CLI ships with current Obsidian versions. Turn it on in Settings > General. The binary lives here:
+The CLI ships with current Obsidian versions (v1.12.4+, Feb 2026). Turn it on in Settings > General, scroll to the Command line interface section, and click Register CLI to auto-add the binary to your PATH. The binary lives here if you need direct paths:
 
 - Windows: `%LOCALAPPDATA%\Programs\Obsidian\Obsidian.exe`
 - macOS: `/Applications/Obsidian.app/Contents/MacOS/Obsidian`
@@ -119,7 +119,7 @@ The `OBSIDIAN_API_KEY` is generated the first time the MCP Tools plugin is enabl
 
 Test the bridge by restarting Claude Desktop and asking for the list of vault files. If you get a list back, it works. If you get "no response" or "server not connected," check three things in order: the `mcp-server.exe` path is right, the API key matches what's in the plugin, Obsidian is actually running. The plugin needs a live Obsidian window to respond.
 
-**One tool to skip (as of April 2026).** Do not install Chrome MCP. It's structurally broken on many systems and the fix has been outstanding for months. Use Playwright through a Bash tool if you need browser automation. Chrome MCP will eat time the human doesn't have. Re-check this status before installing if you're reading this much later than April 2026.
+**Browser automation note (re-checked May 2026).** When this doc was first written in April, Anthropic's Claude in Chrome browser extension was unreliable enough to skip. It had a documented stack of unfixed bugs across `anthropics/claude-code/issues` that ate hours from anyone who tried. Since then, Anthropic has shipped fixes and the extension has improved enough to be a reasonable default for logged-in browser sites, though some edge cases remain (occasional cross-tab bouncing, session-resume UUID failures). If you want browser access in Claude Desktop, install it and accept that it's not yet bulletproof. If you'd rather skip another MCP server in your config, Playwright driven through a Bash tool is a robust alternative that bypasses the extension layer entirely. Note that "Chrome MCP" is sometimes used to refer to Google's separate `chrome-devtools-mcp` project, which is a different and actively maintained tool from the Chrome DevTools team that also works with Claude.
 
 Optional additions, once the Obsidian bridge is solid:
 
