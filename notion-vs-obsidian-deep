@@ -38,7 +38,7 @@ Notion's model is different. They are building toward a public market exit. Publ
 
 ## Pricing: The Honest Breakdown
 
-*Prices as of April 2026 and subject to change. Check both vendors for current numbers before committing.*
+*Prices as of May 2026 and subject to change. Check both vendors for current numbers before committing.*
 
 **Notion:**
 - Free: limited AI trial, cuts off after unspecified usage
@@ -63,7 +63,7 @@ The gap is smaller than most people think. And Claude is dramatically more capab
 
 This changes the framing of the entire comparison.
 
-Notion and Anthropic have a formal partnership. Notion uses Claude Managed Agents, launched in early 2026, to power its agent features. In Notion 3.2, you can select Claude Opus 4.5 as your model alongside GPT-5.2 and Gemini 3. You can assign tasks to Claude directly from Notion's task boards.
+Notion and Anthropic have a formal partnership. Notion uses Claude Managed Agents, launched in early 2026, to power its agent features. In Notion 3.4, you can select Claude Opus 4.7 as your model alongside other frontier models. You can assign tasks to Claude directly from Notion's task boards.
 
 So at the Business tier, you are paying $18 per user per month to access Claude through Notion's interface, with Notion's workspace context limitations layered on top. Or you pay Claude $20 per month directly, get the full model, and give it access to your entire file system with no intermediary.
 
@@ -77,7 +77,7 @@ For teams that need Notion's collaboration layer, the partnership is a genuine f
 - Meeting notes summarization is consistently excellent
 - Inline writing assistance is fast and context-aware
 - Database autofill continuously enriches rows without manual intervention
-- Notion Agent can work autonomously for up to 20 minutes on complex goals
+- Notion Agent can work autonomously for up to 20 minutes on complex goals; Custom Agents (Notion 3.3, Feb 2026) run on schedules and triggers 24/7
 - Calendar, Mail, and Slack integrations are native and functional
 
 **Notion AI weaknesses:**
@@ -179,7 +179,7 @@ The architecture that makes the most sense for a consultant or small team:
 
 - **Personal layer on Obsidian:** memory files, session logs, task system, strategic thinking, decision history. This is where Claude lives. It reads and writes here every session. The context compounds over time.
 - **Client or team layer on Notion:** shared project spaces, collaborative documents, client-facing materials, meeting notes the whole team edits together.
-- **Claude bridging both via MCP:** with the Notion MCP connector installed, Claude can read your Notion workspace the same way it reads your Obsidian vault. One AI, two data sources, full context.
+- **Claude bridging both via MCP:** with the Notion MCP connector installed, Claude can read your Notion workspace the same way it reads your Obsidian vault. One AI, two data sources, full context. The Notion MCP is read-focused by design, which actually fits this architecture: Claude has full read+write on the Obsidian layer where it needs to compound memory, and read-only on the Notion layer where context is the goal.
 
 Personal CoS on Obsidian. Company layer on Notion. Claude reading both. This is the architecture I'd recommend to anyone building AI-powered workflows for clients, and almost nobody has written about it because almost nobody has implemented it end to end.
 
