@@ -1,3 +1,8 @@
-# Session Context
+---
+name: session-context
+description: Rolling log of recent sessions — rotates after 7 days
+metadata:
+  type: project
+---
 
-A rolling log of recent sessions. New notes get added during `/sync` and `/wrap`. Entries older than a week rotate out so this file stays current.
+2026-05-31 — Setup session. Completed sections: minimum (name, role, lanes, top priority), how you work, how you stall, fight record, key people. CEO User Manual absorbed. System initialized.
