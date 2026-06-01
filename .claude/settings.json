@@ -1,1 +1,10 @@
-{}
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "\"C:\\Program Files\\nodejs\\node.exe\" .claude/hooks/hook_date_injection.js"
+      }
+    ]
+  }
+}

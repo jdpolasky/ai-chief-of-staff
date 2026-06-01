@@ -7,18 +7,55 @@ metadata:
 
 ## Lane: Growing the Business
 
-Arcadia is a $150M PE-backed healthcare data and analytics platform. Michael's primary growth lever right now is building strategic partnerships with the largest buyers in the healthcare space — health systems, payers, ACOs, and life sciences organizations. This is the top-priority lane.
+Q2 ends June 30. Must-close deals: ACS, Evergreen Nephrology, IntraCare, Bryant Health, Redeemer Health, UConn. Stretch: Navitas, HCA, Alignment Health.
 
-**Top priority (week of 2026-05-31):** Spend time networking with the largest buyers in the healthcare space to develop strategic partnerships.
+Michael's personal deal ownership: IntraCare (active negotiation as of 2026-06-01), Alkama (Middle East, slow burn), SelectHealth (need time with Andrew Sorenson), Intermountain (need time with Tess Pendry).
 
-**Why:** Arcadia's growth at this scale requires relationships at the top of major organizations, not just product-led motion. This is CEO-level work that can't be delegated.
+Strategic relationships to build: Centene (vector: Matt Holt), Humana (vectors: Sanjay Shetty via Centerwell + Ian Wijaya via Lazard), Elevance (vector: Peter Haytaian — meeting June 17 as potential strategic advisor).
 
-**How to apply:** When Michael asks about growth, business development, or partnerships — this is the frame. Flag if tasks in this lane are sitting idle.
+**Why:** Arcadia's growth at this scale requires relationships at the top of major organizations. This is CEO-level work that can't be delegated.
+
+**How to apply:** Flag deal stalls and relationship gaps. Q2 closes June 30 — flag urgency as it approaches.
+
+## Lane: Running the Company
+
+**Board Meeting — June 17, NYC (hybrid)**
+- Materials due June 12 from section owners; board distribution June 15
+- Yash QB'ing collection
+- Michael's section: Intro / State of the Nation
+- Section owners: Akhil (Topline), Rallo (Product Roadmap), Nick (ARIA/AI), Sandy (LS overlay), Karen (AI narrative), Amy (policy)
+- Same day June 17: Peter Haytaian meeting (Elevance strategic advisor engagement)
+
+**Exec Onboarding**
+- Chris Rallo (CPO, new as of ~2026-05): 3 fast-start MBOs — customer product advisory, ROI tool for sales, integrated product roadmap. Board-discussable roadmap is near-term milestone. Weekly 1:1 with Michael for first 90 days.
+- Akhil Shah (CCO, new as of ~2026-04): Presenting 45-day reflections at board meeting. Owns Apex Health (RFP + POC), Redi Health (RHTP), Mohamed Diab (RHTP), Abacus Health (Blues).
+
+**True Search — SVP Delivery / CDO search:** Open and active. Critical hire — do not let slip.
+
+**Dan Ross offboarding:** Announcement June 15. Michael writes follow-up note after Dan's note goes out.
+
+**McKinsey engagement:** Growth initiative in progress. Presenting midstream update at board (Zach/Prasanth). McKinsey working session June 1.
+
+**VCP 2.0:** Follow-up from NYC discussion. Yash is helping.
+
+**Why:** These are the operational commitments that keep the company running while Michael focuses on growth.
+
+**How to apply:** Board deadline (June 12/15/17) is the nearest hard date. Flag anything drifting toward it. Exec onboarding check-ins should surface monthly.
 
 ## Lane: Being a Better CEO Leader
 
-Michael is actively investing in his own development as a leader and CEO. This includes how he delegates, how he shows up for his exec team, and how he manages the gap between his natural urgency/directness and the pace others need.
+Michael is actively investing in his own development. Pending: schedule Jennifer Porter coaching session, schedule 30m readout with Mark Stubbs (Nordic).
 
-**Why:** He's self-aware about his blind spots (poor delegation, urgency that can overwhelm, directness that can land hard). This lane is about closing those gaps intentionally.
+**Why:** Known blind spots — poor delegation, urgency that can overwhelm. This lane is about closing those gaps intentionally.
 
-**How to apply:** When development, leadership, or team dynamics come up — this lane is relevant. Proactively flag delegation accumulation when tasks that shouldn't sit with him are stacking up.
+**How to apply:** Flag delegation accumulation when tasks pile up that shouldn't sit with him. Proactively surface coaching commitments.
+
+## Infrastructure
+
+Chief of Staff system fully wired as of 2026-06-01. Key details:
+- Vault: `C:\Users\michael.meucci\MeucciVault`
+- MCP filesystem server: Node.js at `C:\Program Files\nodejs`, cmd /c npx pattern
+- Obsidian CLI: full path required — `C:\Users\michael.meucci\AppData\Local\Programs\Obsidian\Obsidian.exe`
+- Date hook: `.claude/hooks/hook_date_injection.js` (Node.js)
+- MCP Tools skipped (removed from registry + corporate SSL issue); filesystem server used instead
+- Outlook email, calendar, and Slack MCP servers confirmed live
