@@ -38,7 +38,7 @@ Notion's model is different. They are building toward a public market exit. Publ
 
 ## Pricing: The Honest Breakdown
 
-*Prices as of May 2026 and subject to change. Check both vendors for current numbers before committing.*
+*Prices as of June 2026 and subject to change. Check both vendors for current numbers before committing.*
 
 **Notion:**
 - Free: limited Notion AI trial
@@ -55,7 +55,7 @@ Notion AI is now bundled into the paid plans rather than sold as a separate add-
 
 Full Obsidian + Claude stack for a solo user: roughly $290 to $340 per year depending on whether you use Sync.
 
-The gap is smaller than most people think. And Claude is dramatically more capable than Notion AI's built-in assistant.
+The gap is smaller than most people think. And for this use case, Claude reading your files directly beats Notion AI searching your workspace, even when Notion is running a Claude model underneath.
 
 ---
 
