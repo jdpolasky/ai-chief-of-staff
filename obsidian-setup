@@ -64,7 +64,9 @@ In Obsidian, open Settings > Community plugins > Browse. Install these in this o
 - **[Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)**. Parses checkbox lines into a structured task layer so Dataview can see "not done" items reliably.
 - **[Templater](https://github.com/SilentVoid13/Templater)**. Lets note templates execute small scripts. You won't need this on day one. Install it anyway.
 - **[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)**. Runs a local embedding model and gives every note a vector. This is how you run semantic search instead of keyword search. In the plugin settings, pick a local embedding model. `TaylorAI/bge-micro-v2` is a reasonable default: light on memory, good enough for English text.
-- **[MCP Tools](https://github.com/jacksteamdev/obsidian-mcp-tools)**. Pairs an HTTP endpoint inside Obsidian with an MCP server binary that talks to it. This is what makes your Claude-to-Obsidian bridge feel like Obsidian instead of a folder browser. You get resolved wikilinks and rendered metadata. *(Status note as of May 2026: the maintainer announced no further updates, citing supply-chain concerns about the binary distribution model. The current release (0.2.31) is signed via GitHub Actions with SLSA provenance and safe to use. Community-maintained alternatives implementing MCP over HTTP/SSE are in development. Check the project README for current recommendations before installing fresh.)*
+- **A bridge from Claude to your vault.** As of mid-2026 you have two good options, and they are different mechanisms.
+  - **Official Obsidian Agent Skills (recommended).** Obsidian's creator, Steph Ango, published a set of official Agent Skills at [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) that teach Claude Code to work with Obsidian's CLI and open formats (Markdown, Bases, JSON Canvas). They follow the open Agent Skills spec, so any skills-compatible agent can use them. For Claude Code, add them with `/plugin marketplace add kepano/obsidian-skills`, or drop the repo's contents into a `.claude` folder in your vault. This is the first-party path, and it leans on the built-in Obsidian CLI (Layer 3) rather than a separate server.
+  - **A community MCP server (only if you want live tool calls).** If you specifically want an MCP server that exposes vault operations as tools with resolved wikilinks and rendered metadata, note that the long-popular [obsidian-mcp-tools](https://github.com/jacksteamdev/obsidian-mcp-tools) plugin was archived on May 13, 2026 (final release 0.2.33) when its maintainer stepped away. Existing installs still work, but for a fresh setup use a maintained community server such as [mcp-obsidian](https://github.com/MarkusPfundstein/mcp-obsidian) (it talks to the Local REST API plugin). Check the project's README before installing.
 
 Skip for now: everything else. You'll find thirty tempting plugins. Ignore them. Come back when you have a real use case.
 
@@ -97,6 +99,8 @@ MCP stands for Model Context Protocol: the open standard for connecting AI model
 - Linux: `~/.config/Claude/claude_desktop_config.json`
 
 Claude Desktop has to be fully restarted after edits for the changes to take effect.
+
+Note: if you took the official Agent Skills path in Layer 2, you may not need an MCP server at all. The Skills plus the built-in CLI cover most vault work. The config below is for the case where you are running a community MCP server for live, tool-call access to a rendered vault. The example keys are named for the old obsidian-mcp-tools plugin, so if you use a different community server, follow its README for the exact command and environment variables.
 
 Here's the minimum config. Replace every placeholder with the human's actual values before saving.
 

@@ -41,11 +41,11 @@ Notion's model is different. They are building toward a public market exit. Publ
 *Prices as of May 2026 and subject to change. Check both vendors for current numbers before committing.*
 
 **Notion:**
-- Free: limited AI trial, cuts off after unspecified usage
-- Plus: $10 per user per month, basic AI writing features only
-- Business: $18 per user per month billed annually, full AI access including Agents, Ask Notion, and Custom Agents
+- Free: limited Notion AI trial
+- Plus: $10 per user per month, with a limited AI trial
+- Business: $20 per user per month (about 20% less billed annually), with full Notion AI, the Notion Agent, and AI Meeting Notes
 
-Full Notion AI requires Business tier. For a solo user, that's $216 per year.
+Notion AI is now bundled into the paid plans rather than sold as a separate add-on. The most autonomous piece, Custom Agents, is metered on top: free to try, then about $10 per 1,000 Notion credits. For a solo user on Business, the base is roughly $240 per year before any agent credits.
 
 **Obsidian + Claude:**
 - Obsidian core: free
@@ -59,15 +59,15 @@ The gap is smaller than most people think. And Claude is dramatically more capab
 
 ---
 
-## The Bombshell: Notion Runs on Claude
+## What Notion AI Actually Runs On
 
-This changes the framing of the entire comparison.
+This is worth getting right, because it is widely misunderstood.
 
-Notion and Anthropic have a formal partnership. Notion uses Claude Managed Agents, launched in early 2026, to power its agent features. In Notion 3.4, you can select Claude Opus 4.7 as your model alongside other frontier models. You can assign tasks to Claude directly from Notion's task boards.
+Notion AI is multi-model. Inside Notion you choose which frontier model answers a given request: Claude, OpenAI's GPT, or Google's Gemini, with an auto option that picks for you. Claude is one of the choices, not the sole engine. Anthropic and Notion do have a real partnership, and Notion has been adding deeper Claude-agent integration, but Notion AI is not simply Claude with a Notion skin.
 
-So at the Business tier, you are paying $18 per user per month to access Claude through Notion's interface, with Notion's workspace context limitations layered on top. Or you pay Claude $20 per month directly, get the full model, and give it access to your entire file system with no intermediary.
+So at the Business tier, about $20 per user per month, you are paying for Notion's structure, its agents, and your choice of model, with the most autonomous agent work metered as credits on top. Or you pay Claude directly at $20 per month, get the full model with no per-action metering, and give it direct access to your entire file system with no intermediary.
 
-For teams that need Notion's collaboration layer, the partnership is a genuine feature. For a solo operator building a personal CoS, it's a middleman between you and a tool you could use directly.
+For teams that need Notion's collaboration layer, this is a genuine feature. For a solo operator building a personal CoS, it is a wrapper between you and a model you could use directly.
 
 ---
 
@@ -77,12 +77,12 @@ For teams that need Notion's collaboration layer, the partnership is a genuine f
 - Meeting notes summarization is consistently excellent
 - Inline writing assistance is fast and context-aware
 - Database autofill continuously enriches rows without manual intervention
-- Notion Agent can work autonomously for up to 20 minutes on complex goals; Custom Agents (Notion 3.3, Feb 2026) run on schedules and triggers 24/7
+- The Notion Agent can work autonomously for up to 20 minutes on complex goals; Custom Agents run on schedules and triggers around the clock, now metered as credits, with a Plan Mode (added 2026) where the agent confirms intent before making big changes
 - Calendar, Mail, and Slack integrations are native and functional
 
 **Notion AI weaknesses:**
-- Workspace Q&A degrades when the answer requires synthesis across multiple pages, not just retrieval from one
-- The most common user complaint, paraphrased from Reddit threads: it doesn't know your workspace, it searches it
+- Workspace Q&A is retrieval-based, so it is strongest pulling from one page or a few and weaker when an answer needs synthesis across many pages at once
+- The long-standing user complaint, paraphrased from Reddit threads: it does not know your workspace, it searches it
 - Occasionally hallucinates content that does not exist in the workspace
 - Writing quality is widely reported as below Claude's frontier models in side-by-side use
 
@@ -147,17 +147,17 @@ Day one experience: Notion works when you open it. Drag, drop, done. No markdown
 
 Mobile: Notion's mobile app is fast, polished, and provides near-desktop functionality including background AI transcription. Obsidian mobile is functional but requires configuration and feels like what it is: a powerful tool that requires setup.
 
-Database views: Six native views from the same underlying data, with a decade of development behind them. Relational databases, formulas, rollups, filtered views. Obsidian's Bases feature is catching up but is still early.
+Database views: Six native views from the same underlying data, with a decade of development behind them. Relational databases, formulas, rollups, filtered views. Obsidian's Bases feature has closed much of this gap (it is now a stable core plugin with table, list, card, and map views, filters, and formulas), though Notion's relational depth and polish still lead.
 
 Templates: Notion's marketplace has hundreds of polished, one-click templates. Obsidian's templates are scattered across GitHub and forums. If you need to get a system running fast, Notion wins.
 
 ---
 
-## The Emerging Middle Ground: Obsidian Bases
+## The Middle Ground That Arrived: Obsidian Bases
 
-Worth watching. Obsidian's Bases feature (2025-2026) brings structured database views directly onto your existing vault without creating separate databases. It queries notes you already have and gives them structure on demand. It supports table and card views, inline editing, relations, and rollups.
+This is no longer something to watch; it shipped. Obsidian's Bases feature is now a stable core plugin that brings database-like views directly onto your existing vault without creating separate databases. It reads notes you already have and gives them structure on demand, with table, list, card, and map views, filters, and formulas. The data stays in your plain Markdown files, and a view is saved as a small `.base` file.
 
-The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. As Bases matures, the database gap between these tools will narrow. It is not closed yet.
+The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. The database gap between the two tools has narrowed substantially, even if Notion's relational depth still leads.
 
 ---
 
