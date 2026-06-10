@@ -32,9 +32,9 @@ You're wiring an Obsidian vault to the human you're talking with so its contents
 The build has five layers, each of which has its own failure modes:
 
 1. **Obsidian itself**: the vault and editor
-2. **Plugins inside Obsidian**: Dataview, Smart Connections, MCP Tools, Tasks, Templater
+2. **Plugins inside Obsidian**: Dataview, Smart Connections, Tasks, Templater
 3. **The Obsidian CLI**: direct vault commands from the shell
-4. **MCP servers**: Claude's protocol for calling tools
+4. **The Claude bridge**: official Agent Skills, or an optional MCP server
 5. **Python hook layer**: automation glue
 
 Build in order. Don't skip ahead. Each layer assumes the previous ones are working. If something breaks at layer 4, don't reinstall layer 2.
@@ -64,7 +64,7 @@ In Obsidian, open Settings > Community plugins > Browse. Install these in this o
 - **[Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)**. Parses checkbox lines into a structured task layer so Dataview can see "not done" items reliably.
 - **[Templater](https://github.com/SilentVoid13/Templater)**. Lets note templates execute small scripts. You won't need this on day one. Install it anyway.
 - **[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)**. Runs a local embedding model and gives every note a vector. This is how you run semantic search instead of keyword search. In the plugin settings, pick a local embedding model. `TaylorAI/bge-micro-v2` is a reasonable default: light on memory, good enough for English text.
-- **[MCP Tools](https://github.com/jacksteamdev/obsidian-mcp-tools)**. Pairs an HTTP endpoint inside Obsidian with an MCP server binary that talks to it. This is what makes your Claude-to-Obsidian bridge feel like Obsidian instead of a folder browser. You get resolved wikilinks and rendered metadata. *(Status note as of May 2026: the maintainer announced no further updates, citing supply-chain concerns about the binary distribution model. The current release (0.2.31) is signed via GitHub Actions with SLSA provenance and safe to use. Community-maintained alternatives implementing MCP over HTTP/SSE are in development. Check the project README for current recommendations before installing fresh.)*
+- **The Claude bridge is not an Obsidian plugin anymore.** The MCP Tools plugin that used to live in this list was archived in May 2026. You wire Claude to the vault in Layer 4 instead, and the recommended path there is a set of official Agent Skills, not something you install from this plugin browser.
 
 Skip for now: everything else. You'll find thirty tempting plugins. Ignore them. Come back when you have a real use case.
 
@@ -88,15 +88,21 @@ Add that location to your `PATH`, or use the full path in scripts. Verified comm
 
 You can call the CLI from a Python script, a shell script, or directly through a Bash tool. It's faster than spinning up an MCP call for simple reads and searches. Use the CLI for bulk operations. Use the MCP server for interactive editing or when you need Obsidian's rendered view.
 
-### Layer 4: MCP wiring
+### Layer 4: Wiring Claude to the vault
 
-MCP stands for Model Context Protocol: the open standard for connecting AI models to external tools. Claude Desktop reads MCP server configs from a JSON file:
+You have two options here as of mid-2026, and they are different mechanisms. Try the first one first. Most people will not need the second.
+
+**Option A: Official Obsidian Agent Skills (recommended).** Obsidian's creator, Steph Ango, published a set of official Agent Skills at [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) that teach Claude Code to work with Obsidian's CLI and open formats (Markdown, Bases, JSON Canvas). They follow the open Agent Skills spec, so any skills-compatible agent can use them. For Claude Code, add them with `/plugin marketplace add kepano/obsidian-skills`, or drop the repo's contents into a `.claude` folder in your vault. This path leans on the built-in CLI from Layer 3 and needs no separate server. For most people it is the whole bridge.
+
+**Option B: A community MCP server (only if you want live tool calls).** An MCP server exposes vault operations as tools, with resolved wikilinks and rendered metadata. The long-popular [obsidian-mcp-tools](https://github.com/jacksteamdev/obsidian-mcp-tools) plugin was archived on May 13, 2026 (final release 0.2.33) when its maintainer stepped away. Existing installs still work, but for a fresh setup use a maintained community server such as [mcp-obsidian](https://github.com/MarkusPfundstein/mcp-obsidian), which talks to the Local REST API plugin. Check its README before installing.
+
+The rest of this layer covers Option B. MCP stands for Model Context Protocol: the open standard for connecting AI models to external tools. Claude Desktop reads MCP server configs from a JSON file:
 
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - Linux: `~/.config/Claude/claude_desktop_config.json`
 
-Claude Desktop has to be fully restarted after edits for the changes to take effect.
+Claude Desktop has to be fully restarted after edits for the changes to take effect. The example keys below are named for the old obsidian-mcp-tools plugin; if you use a different community server, follow its README for the exact command and environment variables.
 
 Here's the minimum config. Replace every placeholder with the human's actual values before saving.
 

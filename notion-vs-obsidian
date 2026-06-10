@@ -41,23 +41,21 @@ Templates. Notion has a centralized marketplace with hundreds of ready-to-use sy
 
 ## Where the Architecture Breaks Down
 
-Notion AI's workspace search is the problem. The most common Reddit complaint, verbatim: "The biggest problem is that it doesn't know your workspace, it just searches it."
+The difference is in how each AI reaches your content. Notion AI retrieves: it searches your workspace and pulls back what matches. Claude with direct file access reads: it loads your actual files into context. Notion has improved its workspace Q&A over time and added autonomous agents, but the underlying model is still search-and-retrieve, so it is strongest pulling from a page or a few and weaker when an answer needs synthesis across many pages at once.
 
-In practice, Notion AI handles single-page lookups well and degrades when synthesis across multiple pages is required. For a Chief of Staff system, that's the core use case. Cross-referencing your session history, your task list, your meeting notes, and your project status is what makes the system valuable. That's exactly where Notion AI struggles most.
-
-Claude with direct file access reads everything, every time, with full context. That's a structural difference, not a feature gap Notion will close with the next update.
+For a Chief of Staff system that synthesis is the core use case. Cross-referencing your session history, your task list, your meeting notes, and your project status is what makes the system valuable, and reading across all of it beats searching it. That's a structural difference, not a feature gap that closes with the next update.
 
 There's also the migration question. If you've built a deep Obsidian system and want to move to Notion, budget time and expect to lose structure. Wikilinks, backlinks, and plugin metadata don't transfer cleanly. The reverse trip -- Notion to Obsidian -- is actually straightforward. The broader risk with Notion is format longevity: your content lives in a proprietary database, not plain text files, and complex pages don't always export cleanly to other tools. Obsidian files are readable in any text editor regardless of whether the app exists.
 
 ---
 
-## The Bombshell Nobody Mentions
+## What Notion AI Actually Runs On
 
-Notion officially runs on Claude. Anthropic and Notion have a formal partnership. Notion uses Claude Managed Agents. You can pick Claude Opus 4.7 as your model in Notion 3.4.
+This one is widely misunderstood. Notion AI is multi-model. Inside Notion you pick which frontier model answers: Claude, OpenAI's GPT, or Google's Gemini. Claude is one option on the menu, not the engine underneath, and Anthropic and Notion do have a real partnership. So the honest framing is not that Notion is a Claude reseller. It is that Notion gives you a choice of models wrapped in its structure and workspace context.
 
-So at the Business tier, you're paying $18 per user per month to access Claude through Notion's interface, with Notion's context limitations on top. Or you pay Claude $20 per month directly, get the full model, and give it access to your entire file system with no intermediary.
+At the Business tier, about $20 per user per month, you get that model choice plus Notion's agents, with the most autonomous agent runs metered separately as credits. Or you pay Claude directly at $20 per month, get the full model with no per-action metering, and give it direct access to your entire file system with no intermediary.
 
-The question is whether Notion's structure is worth the extra layer. For some people, yes. For a solo operator building a personal CoS, probably not.
+The question is whether Notion's structure and collaboration are worth the wrapper. For a team, often yes. For a solo operator building a personal CoS, usually not.
 
 ---
 
