@@ -6,6 +6,8 @@
 
 > **Just here for the Obsidian setup guide?** Jump straight to [`obsidian-setup`](obsidian-setup). Plain English, no coding background assumed. The Chief of Staff system below is the bigger thing it builds toward, but the guide stands on its own.
 
+> **New: the memory engine is now its own repo.** The memory layer this system describes is published as a runnable, tested kit at [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine). Point your AI agent at it to add a real memory engine to your own build.
+
 A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
 
 Every new conversation with an AI starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. This repo fixes that. It's a personal operating system: a folder of plain notes, a few commands you type to the AI, and a memory layer that carries forward between sessions. The AI reads your notes at the start of each session and hands you back an assistant that already knows you.
