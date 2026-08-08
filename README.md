@@ -1,5 +1,7 @@
 # Chief of Staff
 
+> **This repo is chapter one.** It kept growing until it had to be torn down and rebuilt smaller. What it became: [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This version still works and still stands on its own.
+
 > **Note:** This whole thing is designed for non-coders. The install guide below assumes you've never used a terminal or installed a code project before. If you've done that stuff, skip ahead. Nothing here will gatekeep you out.
 
 > **Have Claude walk you through it.** If you already have Claude in any form (paid or free, browser or phone), paste this whole README into a Claude conversation and say "walk me through this." Claude reads it back to you in plain English, coaches you through the terminal, and helps when something breaks. The doc was written to work both ways.
