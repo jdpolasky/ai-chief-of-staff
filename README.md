@@ -8,6 +8,8 @@
 
 > **Just here for the Obsidian setup guide?** Jump straight to [`obsidian-setup`](obsidian-setup). Plain English, no coding background assumed. The Chief of Staff system below is the bigger thing it builds toward, but the guide stands on its own.
 
+> **Notion or Obsidian?** The most common question this repo gets. The honest comparison, updated August 2026: [`notion-vs-obsidian.md`](notion-vs-obsidian.md) for the short read, [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md) for the full analysis.
+
 > **New: the memory engine is now its own repo.** The memory layer this system describes is published as a runnable, tested kit at [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine). Point your AI agent at it to add a real memory engine to your own build.
 
 A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
@@ -101,8 +103,8 @@ Give it two weeks of real use. Memory accumulates and rules get written down whe
 
 - [`obsidian-setup`](obsidian-setup). Step-by-step guide to wiring up Obsidian and the optional MCP servers (the connectors that let the AI read your email and calendar). Plain English. No coding background assumed. Once you have the system running, paste this file into Claude and say "do this."
 - [`ARCHITECTURE.md`](ARCHITECTURE.md). The longer writeup. The loop, the memory model, the operating rules, the design choices. Read this if you want the system explained before you commit.
-- [`notion-vs-obsidian`](notion-vs-obsidian). Short editorial on why this uses Obsidian and not Notion.
-- [`notion-vs-obsidian-deep`](notion-vs-obsidian-deep). The longer version of the same argument.
+- [`notion-vs-obsidian.md`](notion-vs-obsidian.md). Short editorial on why this uses Obsidian and not Notion.
+- [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md). The longer version of the same argument.
 
 A note on jargon: a few technical words show up in the docs. Here's the short version, so they don't slow you down.
 
