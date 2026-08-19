@@ -61,5 +61,5 @@ See [Quickstart in the README](README.md#quickstart). Four questions get you a w
 
 - **Repo:** https://github.com/jdpolasky/ai-chief-of-staff
 - **Architecture deep-dive:** [ARCHITECTURE.md](ARCHITECTURE.md)
-- **Obsidian setup guide:** [obsidian-setup](obsidian-setup)
+- **Obsidian setup guide:** [obsidian-setup](obsidian-setup.md)
 - **Notion vs Obsidian (why vault-based):** [notion-vs-obsidian](notion-vs-obsidian.md)
