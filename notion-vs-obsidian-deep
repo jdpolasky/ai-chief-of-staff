@@ -38,7 +38,7 @@ Notion's model is different. They are building toward a public market exit. Publ
 
 ## Pricing: The Honest Breakdown
 
-*Prices as of June 2026 and subject to change. Check both vendors for current numbers before committing.*
+*Prices as of August 2026 and subject to change. Check both vendors for current numbers before committing.*
 
 **Notion:**
 - Free: limited Notion AI trial
@@ -48,12 +48,12 @@ Notion's model is different. They are building toward a public market exit. Publ
 Notion AI is now bundled into the paid plans rather than sold as a separate add-on. The most autonomous piece, Custom Agents, is metered on top: free to try, then about $10 per 1,000 Notion credits. For a solo user on Business, the base is roughly $240 per year before any agent credits.
 
 **Obsidian + Claude:**
-- Obsidian core: free
-- Commercial license: $50 per year
+- Obsidian core: free, including for commercial use
+- Commercial license (now voluntary, a way to support development rather than a requirement): $50 per year
 - Obsidian Sync (optional): $48 per year
 - Claude Pro: $240 per year ($20/month)
 
-Full Obsidian + Claude stack for a solo user: roughly $290 to $340 per year depending on whether you use Sync.
+Full Obsidian + Claude stack for a solo user: $240 per year at the floor, up to roughly $340 if you add Sync and choose to support development with the voluntary license.
 
 The gap is smaller than most people think. And for this use case, Claude reading your files directly beats Notion AI searching your workspace, even when Notion is running a Claude model underneath.
 
@@ -86,12 +86,14 @@ For teams that need Notion's collaboration layer, this is a genuine feature. For
 - Occasionally hallucinates content that does not exist in the workspace
 - Writing quality is widely reported as below Claude's frontier models in side-by-side use
 
-**Claude with Obsidian MCP:**
+**Claude with direct vault access:**
 - Reads across the full vault on demand, with no search intermediary between the AI and your files
 - Full context across session logs, task lists, project files, memory files, and strategic documents simultaneously
 - No workspace size limitations on what gets loaded into context
 
 The structural difference: Notion AI searches your workspace. Claude reads it. That gap matters most for a CoS use case, which is fundamentally about cross-referencing everything you know to help you make better decisions.
+
+The agent era sharpens this further. An agent working in plain files needs no translation layer: it reads, writes, and reorganizes markdown the same way you would. An agent working in Notion goes through the API, converting every page to and from Notion's block format on each trip. A wave of new AI-first markdown tools launched in 2026 on exactly this premise, positioning themselves against both Notion and Obsidian, and the premise is sound: plain text is the native habitat of AI agents. Obsidian happens to already be there.
 
 ---
 
@@ -103,11 +105,12 @@ The structural difference: Notion AI searches your workspace. Claude reads it. T
 - Contractual agreements prevent subprocessors from using your content for model training
 - Enterprise users get zero data retention with LLM providers
 - Non-enterprise users: data deleted within 30 days
-- Offline mode exists but is severely limited: only first 50 database rows sync, no AI features offline, risk of data loss after 30 days offline
+- Offline mode exists but is partial: you mark individual pages as available offline; complex blocks, relations, rollups, formulas, and all AI features don't work offline; and there is still no way to take a whole workspace offline
 
 **Obsidian:**
 - Files live on your machine, period
 - No cloud dependency by default
+- Obsidian Sync, the optional cloud piece, passed independent security audits by Cure53 and Trail of Bits, published May 2026, with all findings remediated and validated by the auditors
 - With local LLMs via Ollama: fully air-gapped, zero external data transmission, AI runs on your hardware
 - If Obsidian shut down tomorrow, every file is still there, readable in any text editor
 
@@ -131,9 +134,7 @@ The Smart Connections plugin alone, which powers semantic search across your vau
 
 **Obsidian to Notion:** The md2notion tool exists but frequently times out and throws errors. Notion's native markdown import loses data. Wikilinks do not transfer. Backlinks do not transfer. Plugin-generated metadata does not transfer. The graph structure you built over months does not transfer.
 
-The trip from Obsidian to Notion is the hard direction. If you've built a serious Obsidian system and want to move, budget time and expect to lose structure. Wikilinks don't transfer. Backlinks don't transfer. Plugin-generated metadata doesn't transfer. The graph you built over months doesn't transfer. This is not a hypothetical concern -- it's the standard behavior of moving between systems with different structural assumptions.
-
-The reverse trip, Notion to Obsidian, is relatively clean. Export as HTML zip, run Obsidian Importer, done.
+The asymmetry is the point. The trip into Obsidian is clean because plain markdown accepts almost anything. The trip out is lossy because Notion's structure has nowhere to put wikilinks, backlinks, or plugin metadata. That is not a bug in either tool. It is the standard behavior of moving between systems with different structural assumptions, and it means the Obsidian-to-Notion direction costs you the graph you spent months building.
 
 The broader point is about format longevity. Your Obsidian files are plain text markdown, readable in any text editor in thirty years regardless of whether Obsidian exists. Notion stores content in a proprietary database. Current exports work, but complex pages don't always transfer cleanly to other tools, and that risk compounds as your system grows. Markdown predates Notion by over a decade and will outlast it.
 
@@ -147,7 +148,7 @@ Day one experience: Notion works when you open it. Drag, drop, done. No markdown
 
 Mobile: Notion's mobile app is fast, polished, and provides near-desktop functionality including background AI transcription. Obsidian mobile is functional but requires configuration and feels like what it is: a powerful tool that requires setup.
 
-Database views: Six native views from the same underlying data, with a decade of development behind them. Relational databases, formulas, rollups, filtered views. Obsidian's Bases feature has closed much of this gap (it is now a stable core plugin with table, list, card, and map views, filters, and formulas), though Notion's relational depth and polish still lead.
+Database views: Six native views from the same underlying data, with a decade of development behind them. Relational databases, formulas, rollups, filtered views. Obsidian's Bases feature has closed much of this gap, and the line between them is now easy to state precisely: Bases has views, filters, and formulas; it does not have relations or rollups. Anything that needs two linked databases still belongs in Notion.
 
 Templates: Notion's marketplace has hundreds of polished, one-click templates. Obsidian's templates are scattered across GitHub and forums. If you need to get a system running fast, Notion wins.
 
@@ -155,9 +156,9 @@ Templates: Notion's marketplace has hundreds of polished, one-click templates. O
 
 ## The Middle Ground That Arrived: Obsidian Bases
 
-This is no longer something to watch; it shipped. Obsidian's Bases feature is now a stable core plugin that brings database-like views directly onto your existing vault without creating separate databases. It reads notes you already have and gives them structure on demand, with table, list, card, and map views, filters, and formulas. The data stays in your plain Markdown files, and a view is saved as a small `.base` file.
+This is no longer something to watch; it shipped, matured, and went everywhere. Obsidian's Bases feature is a core plugin, free for every user, on desktop and mobile, that brings database-like views directly onto your existing vault without creating separate databases. It reads notes you already have and gives them structure on demand, with table, list, card, and map views, filters, and formulas. The data stays in your plain Markdown files, and a view is saved as a small `.base` file. Through 2026 it has settled into steady refinement rather than reinvention, which is what you want from a feature you build workflows on.
 
-The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. The database gap between the two tools has narrowed substantially, even if Notion's relational depth still leads.
+The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. The honest limits: formulas work within a single base, and there are no relations or rollups connecting one base to another. Notion's linked-database machinery has no Obsidian equivalent yet. But for the common case, seeing the notes you already have as a sortable, filterable table, the gap is closed.
 
 ---
 

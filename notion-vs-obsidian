@@ -33,7 +33,7 @@ Day one experience. Notion works when you open it. Drag, drop, done. My Obsidian
 
 Mobile. Notion's mobile app is polished and full-featured. Obsidian mobile works, but it requires setup and feels like a power tool, because it is.
 
-Database views. Six native views from the same data: table, board, calendar, timeline, gallery, list. A decade of polish behind them. If you're running a CRM or content calendar, Notion is better today.
+Database views. Six native views from the same data: table, board, calendar, timeline, gallery, list, plus relations and rollups that link databases together. A decade of polish behind them. Obsidian finally has a real answer here: Bases, a free built-in feature that turns the notes you already have into table, list, card, and map views with filters and formulas, on desktop and mobile. It closed more of this gap than I expected, but it has no relations or rollups. If you're running a CRM or content calendar with linked tables, Notion is still better today. If you need to see and sort your notes as a table, Obsidian now does that out of the box.
 
 Templates. Notion has a centralized marketplace with hundreds of ready-to-use systems. Obsidian templates live scattered across GitHub repos and forum posts.
 
@@ -44,6 +44,8 @@ Templates. Notion has a centralized marketplace with hundreds of ready-to-use sy
 The difference is in how each AI reaches your content. Notion AI retrieves: it searches your workspace and pulls back what matches. Claude with direct file access reads: it loads your actual files into context. Notion has improved its workspace Q&A over time and added autonomous agents, but the underlying model is still search-and-retrieve, so it is strongest pulling from a page or a few and weaker when an answer needs synthesis across many pages at once.
 
 For a Chief of Staff system that synthesis is the core use case. Cross-referencing your session history, your task list, your meeting notes, and your project status is what makes the system valuable, and reading across all of it beats searching it. That's a structural difference, not a feature gap that closes with the next update.
+
+The shift to agents widens this gap. An AI agent can live directly in a folder of plain markdown files: read them, write them, reorganize them, with no translation layer in between. To do the same work in Notion, the agent goes through Notion's API, where every page gets converted to and from Notion's block format on each trip. Plain files are turning out to be what agents work best in, and that argument gets stronger with every release cycle.
 
 There's also the migration question. If you've built a deep Obsidian system and want to move to Notion, budget time and expect to lose structure. Wikilinks, backlinks, and plugin metadata don't transfer cleanly. The reverse trip -- Notion to Obsidian -- is actually straightforward. The broader risk with Notion is format longevity: your content lives in a proprietary database, not plain text files, and complex pages don't always export cleanly to other tools. Obsidian files are readable in any text editor regardless of whether the app exists.
 
