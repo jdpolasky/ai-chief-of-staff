@@ -66,6 +66,8 @@ In Obsidian, open Settings > Community plugins > Browse. Install these in this o
 - **[Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)**. Runs a local embedding model and gives every note a vector. This is how you run semantic search instead of keyword search. In the plugin settings, pick a local embedding model. `TaylorAI/bge-micro-v2` is a reasonable default: light on memory, good enough for English text.
 - **The Claude bridge is not an Obsidian plugin anymore.** The MCP Tools plugin that used to live in this list was archived in May 2026. You wire Claude to the vault in Layer 4 instead, and the recommended path there is a set of official Agent Skills, not something you install from this plugin browser.
 
+One thing you don't need to install: **Bases**, Obsidian's built-in database feature. It's core, free, and works on desktop and mobile. It turns any set of notes into a sortable, filterable table (or list, card, or map view) driven by the properties in your frontmatter, and it's the closest thing Obsidian has to Notion databases. If you don't see it, enable it under Settings > Core plugins. The official Agent Skills in Layer 4 already know how to work with it.
+
 Skip for now: everything else. You'll find thirty tempting plugins. Ignore them. Come back when you have a real use case.
 
 ### Layer 3: The Obsidian Command Line Interface (CLI)
