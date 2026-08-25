@@ -24,7 +24,7 @@ A session starts with `/start`. You work. Optionally you `/sync` in the middle. 
 
 That's the whole system.
 
-The commands are small. The state they read and write is where the value lives. Each command is a short set of plain instructions that tells the model what to load, what to ask, and what to save. The work is keeping the vault honest.
+The commands are small. The state they read and write is where the value lives. Each command is a short set of plain instructions that tells the model what to load, what to ask, and what to save. The work is keeping the vault accurate.
 
 ## The four commands
 
@@ -40,7 +40,7 @@ You used to lose minutes at the top of every session re-priming a fresh model. T
 
 ### `/sync`
 
-Mid-session checkpoint. Optional. Saves to memory, updates the Command Center or the To-Do List, and keeps the system honest halfway through. Most sessions don't need it. Long ones do. What you decided two hours ago can fall out of context before `/wrap` comes around.
+Mid-session checkpoint. Optional. Saves to memory, updates the Command Center or the To-Do List, and keeps the system accurate halfway through. Most sessions don't need it. Long ones do. What you decided two hours ago can fall out of context before `/wrap` comes around.
 
 ### `/wrap`
 
@@ -199,7 +199,7 @@ In early April 2026 Andrej Karpathy posted a gist titled "LLM Wiki", a markdown 
 
 Between Karpathy's post and this document, multiple open-source implementations of the same basic pattern have shipped. A partial list: Jereme Strange's [ADAM Framework](https://github.com/ajsupplycollc/Adam) (MIT-licensed, five layers, closest architectural cousin to this one, and the source of two adapted scripts in my local setup; full credit in [CREDITS.md](CREDITS.md)), Caleb Peavy's [`unmutable/ai-chief-of-staff`](https://github.com/unmutable/ai-chief-of-staff) (which shares this repo's name and deserves the namespace nod), [`kbanc85/claudia`](https://github.com/kbanc85/claudia), MemPalace, and the earlier Hermes Agent work from Nous Research. That's a good sign. Markdown plus a language model is now a serious substrate for personal operating systems. The pattern is becoming popular because it's badly needed and so damn helpful.
 
-This repo is one of those implementations, built by a non-coder with ADHD for non-coders with ADHD. It's been lived in for over a hundred sessions against real paying client work and a public platform build. Every rule in this document came out of that work. Nothing here is theoretical.
+This repo is one of those implementations, built by a non-coder with ADHD for non-coders with ADHD. It's been lived in for over a hundred sessions of real paying client work and a public platform build. Every rule in this document came out of that work. Nothing here is theoretical.
 
 Your Chief of Staff should be different. Start with this one. Keep what works and cut what doesn't. The code can be copied but the rest cannot, it must grow toward your specific psyche. 
 

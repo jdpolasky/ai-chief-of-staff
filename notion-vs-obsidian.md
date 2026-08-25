@@ -6,7 +6,7 @@
 
 A common question I get after people hear about my system is, "Can I build this in Notion? I'm already there."
 
-The honest answer is sometimes yes, sometimes no, and one architecture nobody's talking about that might be the right answer for most people.
+The answer is sometimes yes, sometimes no, and one architecture nobody's talking about that might be the right answer for most people.
 
 I did analysis on both and here are the results.
 
@@ -53,7 +53,7 @@ There's also the migration question. If you've built a deep Obsidian system and 
 
 ## What Notion AI Actually Runs On
 
-This one is widely misunderstood. Notion AI is multi-model. Inside Notion you pick which frontier model answers: Claude, OpenAI's GPT, or Google's Gemini. Claude is one option on the menu, not the engine underneath, and Anthropic and Notion do have a real partnership. So the honest framing is not that Notion is a Claude reseller. It is that Notion gives you a choice of models wrapped in its structure and workspace context.
+This one is widely misunderstood. Notion AI is multi-model. Inside Notion you pick which frontier model answers: Claude, OpenAI's GPT, or Google's Gemini. Claude is one option on the menu, not the engine underneath, and Anthropic and Notion do have a real partnership. So the real framing is not that Notion is a Claude reseller. It is that Notion gives you a choice of models wrapped in its structure and workspace context.
 
 At the Business tier, about $20 per user per month, you get that model choice plus Notion's agents, with the most autonomous agent runs metered separately as credits. Or you pay Claude directly at $20 per month, get the full model with no per-action metering, and give it direct access to your entire file system with no intermediary.
 

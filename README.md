@@ -10,7 +10,7 @@
 
 > **Just here for the Obsidian setup guide?** Jump straight to [`obsidian-setup`](obsidian-setup.md). Plain English, no coding background assumed. The Chief of Staff system below is the bigger thing it builds toward, but the guide stands on its own.
 
-> **Notion or Obsidian?** The most common question this repo gets. The honest comparison, updated August 2026: [`notion-vs-obsidian.md`](notion-vs-obsidian.md) for the short read, [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md) for the full analysis.
+> **Notion or Obsidian?** The most common question this repo gets. The full comparison, updated August 2026: [`notion-vs-obsidian.md`](notion-vs-obsidian.md) for the short read, [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md) for the full analysis.
 
 > **New: the memory engine is now its own repo.** The memory layer this system describes is published as a runnable, tested kit at [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine). Point your AI agent at it to add a real memory engine to your own build.
 
@@ -18,7 +18,7 @@ A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD pros
 
 Every new conversation with an AI starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. This repo fixes that. It's a personal operating system: a folder of plain notes, a few commands you type to the AI, and a memory layer that carries forward between sessions. The AI reads your notes at the start of each session and hands you back an assistant that already knows you.
 
-A non-coder with ADHD built this for non-coders with ADHD, and lived in it for over a hundred sessions against real client work and a public platform build. The rules in here were learned, not theorized.
+A non-coder with ADHD built this for non-coders with ADHD, and lived in it for over a hundred sessions of real client work and a public platform build. The rules in here were learned, not theorized.
 
 ## The loop
 

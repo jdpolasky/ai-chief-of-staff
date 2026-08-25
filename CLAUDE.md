@@ -39,7 +39,7 @@ Then flag: Waiting For items past their follow-up date, stale tasks, and Command
 
 ## Your Patterns
 
-This section fills in as you use the system. It's where your stall patterns, what triggers freeze, and what actually helps you move are written down. The more honest it is, the better the system works with you instead of against you. You can fill it in via `/setup`, or just tell me about it any time and I'll save it here.
+This section fills in as you use the system. It's where your stall patterns, what triggers freeze, and what actually helps you move are written down. The more accurate it is, the better the system works with you instead of against you. You can fill it in via `/setup`, or just tell me about it any time and I'll save it here.
 
 # Preferences
 

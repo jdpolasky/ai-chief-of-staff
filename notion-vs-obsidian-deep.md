@@ -2,7 +2,7 @@
 
 *This is the deep version. For the short read, see [notion-vs-obsidian](notion-vs-obsidian.md).*
 
-*I built a Claude-powered Chief of Staff system on Obsidian over several months. This document is my honest analysis of whether that was the right call, and whether Notion could do the same job. I tested both. I ran Notion AI through live prompts. I read the documentation, the Reddit threads, the changelogs, and the user complaints. I'm going to tell you what I found, including where Obsidian loses.*
+*I built a Claude-powered Chief of Staff system on Obsidian over several months. This document is my analysis of whether that was the right call, and whether Notion could do the same job. I tested both. I ran Notion AI through live prompts. I read the documentation, the Reddit threads, the changelogs, and the user complaints. I'm going to tell you what I found, including where Obsidian loses.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 People who see this system ask two things. First: "How did you build this?" That's what the rest of this repo answers. Second: "Can I do it in Notion? I'm already there."
 
-The second question deserves a real answer. Most Notion vs. Obsidian comparisons are written by people who use one tool and are generous to the other. This one is written by someone who built a working system in Obsidian and then spent time honestly stress-testing Notion to see if that was the right call.
+The second question deserves a real answer. Most Notion vs. Obsidian comparisons are written by people who use one tool and are generous to the other. This one is written by someone who built a working system in Obsidian and then spent time seriously stress-testing Notion to see if that was the right call.
 
 Short answer: it depends on who you are. Long answer: below.
 
@@ -36,7 +36,7 @@ Notion's model is different. They are building toward a public market exit. Publ
 
 ---
 
-## Pricing: The Honest Breakdown
+## Pricing: The Breakdown
 
 *Prices as of August 2026 and subject to change. Check both vendors for current numbers before committing.*
 
@@ -140,7 +140,7 @@ The broader point is about format longevity. Your Obsidian files are plain text 
 
 ---
 
-## Where Notion Genuinely Wins: The Honest Version
+## Where Notion Genuinely Wins
 
 Real-time collaboration is not close. Notion handles simultaneous editing natively: multiple cursors visible, changes instant, no merge conflicts. Inline comments, @mentions, permission levels from full access to read-only, guest access, team spaces. Obsidian shared vaults use a diff-match-patch merge algorithm and have no file locking. Two people editing the same note simultaneously creates conflicts that require manual resolution. If a team needs to work in the same system simultaneously, Notion is the correct choice.
 
@@ -158,7 +158,7 @@ Templates: Notion's marketplace has hundreds of polished, one-click templates. O
 
 This is no longer something to watch; it shipped, matured, and went everywhere. Obsidian's Bases feature is a core plugin, free for every user, on desktop and mobile, that brings database-like views directly onto your existing vault without creating separate databases. It reads notes you already have and gives them structure on demand, with table, list, card, and map views, filters, and formulas. The data stays in your plain Markdown files, and a view is saved as a small `.base` file. Through 2026 it has settled into steady refinement rather than reinvention, which is what you want from a feature you build workflows on.
 
-The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. The honest limits: formulas work within a single base, and there are no relations or rollups connecting one base to another. Notion's linked-database machinery has no Obsidian equivalent yet. But for the common case, seeing the notes you already have as a sortable, filterable table, the gap is closed.
+The philosophical difference is significant: Notion databases are containers you build and fill. Bases surfaces structure that already exists in your notes. The limits: formulas work within a single base, and there are no relations or rollups connecting one base to another. Notion's linked-database machinery has no Obsidian equivalent yet. But for the common case, seeing the notes you already have as a sortable, filterable table, the gap is closed.
 
 ---
 

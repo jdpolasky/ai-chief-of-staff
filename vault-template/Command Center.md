@@ -34,6 +34,6 @@
 
 ## State Check
 
-- **Energy:** [Honest answer.]
+- **Energy:** [How it actually is.]
 - **Biggest blocker:** [What's in the way.]
 - **Next action:** [The very next thing to do.]

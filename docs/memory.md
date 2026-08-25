@@ -4,7 +4,7 @@
 
 After running this system for 116 sessions against 125 active memory files (plus a handful of session logs and self-notes, and an archive of retired files), persistent memory here looks like something more specific. It is a directory of short markdown files with frontmatter, indexed at the top by a file called `MEMORY.md`, that the model reads at the start of every session before it sees the conversation. Functionally this is a narrow, structured application of retrieval-augmented generation (RAG): the index points, the model decides which files are relevant, the pulled files ground the response. The pattern is not novel. YAML frontmatter on markdown has been standard Obsidian-vault convention for years. What's worth writing up is which disciplines make the pattern load-bearing and which break it.
 
-This doc covers what the directory holds, how it is laid out, what goes in, what stays out, and how memory stays honest over time.
+This doc covers what the directory holds, how it is laid out, what goes in, what stays out, and how memory stays accurate over time.
 
 ## The floor
 
@@ -80,7 +80,7 @@ The rule I use: if I can grep the repo and answer the same question, the memory 
 
 Memories go stale. A feedback rule can stop holding. A project can close. A reference can rot.
 
-This system ships two mechanisms to keep memory honest. Both are simple.
+This system ships two mechanisms to keep memory accurate. Both are simple.
 
 **The firings log.** At `/wrap` time, for every memory that actually shaped a response during the session, the model appends one line to `_system/memory_firings.log`:
 
