@@ -1,5 +1,7 @@
 # The feedback loop
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 The model does not get smarter. Weights don't update between sessions. What does change is the set of rules, preferences, and facts the model reads before every conversation. When the model does something I don't want, I tell it. The correction gets written down. The correction loads at the start of the next session. Next session the model doesn't make the same mistake, because it walked into the session carrying a rule that wasn't there before.
 
 That loop is the part of a personal operating system nobody sells you on, because on day one nothing has been saved and the model is behaving generically. A few weeks in, it is the reason the whole thing works.

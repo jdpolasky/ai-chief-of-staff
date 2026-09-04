@@ -1,5 +1,7 @@
 # Credits
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 This file documents the lineage of code and concepts that shaped this repo. It is maintained alongside the source so anyone reading can trace where ideas came from and who deserves credit. Attribution here supplements, and does not replace, the per-file notices that live inside derived source files.
 
 ## ADAM Framework

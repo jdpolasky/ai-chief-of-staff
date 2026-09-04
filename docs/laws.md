@@ -1,5 +1,7 @@
 # Operating laws
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 Give an LLM access to your file system, a terminal, and your email, and the failure modes stop being textual. They become permanent. A model that rewrites the wrong file doesn't unwrite it. A model that confidently states a fake date puts that date into an email you later have to correct. The cost of an unprincipled tool-using assistant is measured in undo operations that aren't available to you.
 
 Four rules do most of the work to keep that from happening. Two ship with this template in `CLAUDE.md`, which Claude Code loads at the start of every session. Two more I added over time as feedback memories after real frictions surfaced. They are short. They compound with the rest of memory. Together they are the difference between a helpful assistant and one that creates extra work.

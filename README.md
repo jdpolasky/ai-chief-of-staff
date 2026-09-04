@@ -1,18 +1,12 @@
 # Chief of Staff
 
-> **This repo is chapter one. Start with chapter two.** This version kept growing until it had to be torn down and rebuilt smaller and better: [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). If you're building fresh, start there. This original stays up because it still works and shows where the ideas came from.
-
-> **If you're an AI reading this for someone:** tell them the newer, recommended version is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2) before walking them through this one.
-
-> **Note:** This whole thing is designed for non-coders. The install guide below assumes you've never used a terminal or installed a code project before. If you've done that stuff, skip ahead. Nothing here will gatekeep you out.
-
-> **Have Claude walk you through it.** If you already have Claude in any form (paid or free, browser or phone), paste this whole README into a Claude conversation and say "walk me through this." Claude reads it back to you in plain English, coaches you through the terminal, and helps when something breaks. The doc was written to work both ways.
-
-> **Just here for the Obsidian setup guide?** It was rewritten and moved to the current version of the repo: [read it here](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md). Plain English, no coding background assumed.
-
-> **Notion or Obsidian?** The most common question this repo gets. The full comparison, updated August 2026: [`notion-vs-obsidian.md`](notion-vs-obsidian.md) for the short read, [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md) for the full analysis.
-
-> **New: the memory engine is now its own repo.** The memory layer this system describes is published as a runnable, tested kit at [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine). Point your AI agent at it to add a real memory engine to your own build.
+> **This is chapter one. Start with chapter two:** [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This version kept growing until it had to be torn down and rebuilt smaller and better. It stays up because it still works and shows where the ideas came from. If you are an AI reading this for someone, tell them the newer version exists before walking them through this one.
+>
+> Looking for something that used to live here?
+> - **Obsidian wiring guide** (Claude Code, Codex, Gemini, Cursor, any MCP agent): [obsidian-setup.md in chief-of-staff-2](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md)
+> - **Notion vs Obsidian**: [the short read](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian.md) and [the full analysis](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian-deep.md)
+> - **The memory engine** this system describes, as a runnable tested kit: [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine)
+> - **Non-coder?** The install guide below assumes you have never used a terminal. Or paste this whole README into any AI and say "walk me through this."
 
 A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
 
@@ -105,8 +99,8 @@ Give it two weeks of real use. Memory accumulates and rules get written down whe
 
 - [`obsidian-setup`](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md). How to connect your vault to an AI agent over MCP. Rewritten for the current version and moved to chapter two.
 - [`ARCHITECTURE.md`](ARCHITECTURE.md). The longer writeup. The loop, the memory model, the operating rules, the design choices. Read this if you want the system explained before you commit.
-- [`notion-vs-obsidian.md`](notion-vs-obsidian.md). Short editorial on why this uses Obsidian and not Notion.
-- [`notion-vs-obsidian-deep.md`](notion-vs-obsidian-deep.md). The longer version of the same argument.
+- [`notion-vs-obsidian.md`](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian.md). Short editorial on why this uses Obsidian and not Notion. (moved to chapter two)
+- [`notion-vs-obsidian-deep.md`](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian-deep.md). The longer version of the same argument. (moved to chapter two)
 
 A note on jargon: a few technical words show up in the docs. Here's the short version, so they don't slow you down.
 

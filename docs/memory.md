@@ -1,5 +1,7 @@
 # Memory
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 "Persistent memory" is the line most personal-LLM repos put in their README. The field in April 2026 is crowded: Karpathy's LLM Wiki gist, Caleb Peavy's `unmutable/ai-chief-of-staff`, `kbanc85/claudia`, ADAM, MemPalace, Hermes. Each handles memory differently. Some mean conversation history. Some mean a single long scratch file. Some mean a folder of notes the model can grep.
 
 After running this system for 116 sessions against 125 active memory files (plus a handful of session logs and self-notes, and an archive of retired files), persistent memory here looks like something more specific. It is a directory of short markdown files with frontmatter, indexed at the top by a file called `MEMORY.md`, that the model reads at the start of every session before it sees the conversation. Functionally this is a narrow, structured application of retrieval-augmented generation (RAG): the index points, the model decides which files are relevant, the pulled files ground the response. The pattern is not novel. YAML frontmatter on markdown has been standard Obsidian-vault convention for years. What's worth writing up is which disciplines make the pattern load-bearing and which break it.

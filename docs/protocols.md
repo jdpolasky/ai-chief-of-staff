@@ -1,5 +1,7 @@
 # Protocols
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 Three commands, two files, one loop. Everything else in this system is support.
 
 The three commands are `/start`, `/sync`, and `/wrap`. The two files are `Command Center.md` and the to-do list. The loop runs every day you work. At session start the model reads the current state of the files. During the session it might check in with `/sync`. At session end it writes back. The files hold the state between sessions.

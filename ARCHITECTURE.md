@@ -1,5 +1,7 @@
 # Architecture
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
+
 Every new conversation with a model starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. Time and focus are spent at the top of every session re-priming a model on a conversation you already had.
 
 This repo is a personal operating system to end that. A vault of markdown files, a handful of slash commands, and a memory layer that persists between sessions. The underlying pattern is retrieval-augmented generation (RAG) over a local vault. It runs on your own machine against your own notes. The model reads the vault at session start and hands you back an assistant that already knows who and where you are.

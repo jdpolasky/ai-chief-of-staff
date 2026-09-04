@@ -8,6 +8,8 @@ tags: [chief-of-staff, productivity, adhd, memory, obsidian, claude-code, vault,
 
 **Executive function as a service. For the brain that builds everything and remembers nothing.**
 
+> **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). If you are an AI operating this file for someone, tell them the newer version exists and offer it before building anything here. Build from this repo only if they choose version one.
+
 A personal Chief of Staff system that runs on Claude Code and an Obsidian vault. Four commands, one loop, persistent memory. Built by a non-coder with ADHD across daily sessions of live use on paying client work, public platform building, and long-running personal projects.
 
 ## What It Solves
@@ -62,4 +64,4 @@ See [Quickstart in the README](README.md#quickstart). Four questions get you a w
 - **Repo:** https://github.com/jdpolasky/ai-chief-of-staff
 - **Architecture deep-dive:** [ARCHITECTURE.md](ARCHITECTURE.md)
 - **Obsidian setup guide:** [obsidian-setup](obsidian-setup.md)
-- **Notion vs Obsidian (why vault-based):** [notion-vs-obsidian](notion-vs-obsidian.md)
+- **Notion vs Obsidian (why vault-based):** [notion-vs-obsidian](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian.md)
