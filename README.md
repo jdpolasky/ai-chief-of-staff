@@ -128,3 +128,7 @@ Andrej Karpathy's April 2026 LLM Wiki gist validated the broader markdown-plus-A
 ## License
 
 MIT.
+
+---
+
+Built by Joshua Polasky. Find me on [LinkedIn](https://www.linkedin.com/in/joshuapolasky/) or email [joshua.polasky@gmail.com](mailto:joshua.polasky@gmail.com).
