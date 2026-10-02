@@ -168,7 +168,7 @@ The template ships `settings.json` empty (`{}`). A minimal example that runs a P
 }
 ```
 
-See [`obsidian-setup`](obsidian-setup.md) Layer 5 for more examples and the events Claude Code exposes.
+See Layer 5 of the [chapter-one version of `obsidian-setup.md`](https://github.com/jdpolasky/ai-chief-of-staff/blob/bb80387c6aed458e62348df26df92ec853f046fc/obsidian-setup.md#layer-5-python-hook-layer) for more examples and the events Claude Code exposes. That guide has since been rewritten for chapter two, and the new version doesn't cover hooks.
 
 ## Technical: the `_system/` folder
 

@@ -4,7 +4,7 @@
 
 "Persistent memory" is the line most personal-LLM repos put in their README. The field in April 2026 is crowded: Karpathy's LLM Wiki gist, Caleb Peavy's `unmutable/ai-chief-of-staff`, `kbanc85/claudia`, ADAM, MemPalace, Hermes. Each handles memory differently. Some mean conversation history. Some mean a single long scratch file. Some mean a folder of notes the model can grep.
 
-After running this system for 116 sessions against 125 active memory files (plus a handful of session logs and self-notes, and an archive of retired files), persistent memory here looks like something more specific. It is a directory of short markdown files with frontmatter, indexed at the top by a file called `MEMORY.md`, that the model reads at the start of every session before it sees the conversation. Functionally this is a narrow, structured application of retrieval-augmented generation (RAG): the index points, the model decides which files are relevant, the pulled files ground the response. The pattern is not novel. YAML frontmatter on markdown has been standard Obsidian-vault convention for years. What's worth writing up is which disciplines make the pattern load-bearing and which break it.
+After running this system day to day, persistent memory here looks like something more specific. It is a directory of short markdown files with frontmatter, indexed at the top by a file called `MEMORY.md`, that the model reads at the start of every session before it sees the conversation. Functionally this is a narrow, structured application of retrieval-augmented generation (RAG): the index points, the model decides which files are relevant, the pulled files ground the response. The pattern is not novel. YAML frontmatter on markdown has been standard Obsidian-vault convention for years. What's worth writing up is which disciplines make the pattern load-bearing and which break it.
 
 This doc covers what the directory holds, how it is laid out, what goes in, what stays out, and how memory stays accurate over time.
 
@@ -19,9 +19,9 @@ Most users will outgrow the floor within a few weeks. When they do, the rest of 
 `.claude/memory/` holds the memory files. `MEMORY.md` sits at the root of that folder. It is an index. One line per file. Under 150 characters each.
 
 ```
-- [Role and tools](user_profile.md) — JP, non-coder, Obsidian + Claude Code
-- [No em-dashes](feedback_communication_style.md) — plain speech, no marketing verbs
-- [Pony Parties Express](project_pony_party_web_stack.md) — Astro + Keystatic, live at pnyparty.netlify.app
+- [Role and tools](user_profile.md) - small-business owner, non-coder, Obsidian + Claude Code
+- [No em-dashes](feedback_communication_style.md) - plain speech, no marketing verbs
+- [Bakery website](project_bakery_website.md) - Astro site for a neighborhood bakery, launch in May
 ```
 
 That's the shape. `MEMORY.md` gets loaded every session because `CLAUDE.md` references it (see [`laws.md`](laws.md) for what `CLAUDE.md` is and how it loads). The referenced memory files get loaded on demand: the model reads `MEMORY.md` at session start, sees the descriptions, and pulls the specific files it decides are relevant to the current work. The index is a map to the terrain.
@@ -48,7 +48,7 @@ Every memory file opens with the same block.
 
 ```
 ---
-name: Writing craft in JP's voice
+name: Writing craft in the user's voice
 description: Reach for the shortest accurate word. Plain language is evidence the thinking is done. No em-dashes, no marketing verbs, no rhythm pastiche.
 type: feedback
 ---
@@ -62,7 +62,7 @@ Three fields. Each earns its keep.
 
 `type` is one of the four above. Later filters (audit, decay) treat categories differently.
 
-Files are named `{type}_{slug}.md`: `feedback_communication_style.md`, `project_pony_party_web_stack.md`, `user_profile.md`. The type prefix is convention, not enforced by tooling, and makes the directory scannable at a glance.
+Files are named `{type}_{slug}.md`: `feedback_communication_style.md`, `project_bakery_website.md`, `user_profile.md`. The type prefix is convention, not enforced by tooling, and makes the directory scannable at a glance.
 
 Optional fields include `decay: exempt` for memories the system should never prune, and `originSessionId` for tracing a memory back to the specific Claude Code session that produced it (the session UUID is available from Claude Code's session state when the memory is written). Add fields when you need them. Don't ship schema you aren't using.
 
