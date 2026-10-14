@@ -1,7 +1,6 @@
 ---
 name: sync
 description: Mid-session checkpoint. Saves to memory, flags Command Center or To-Do drift, rotates session context.
-user_invocable: true
 ---
 
 Mid-session checkpoint. Optional. Most short sessions don't need it. Long sessions (2+ hours) usually do.

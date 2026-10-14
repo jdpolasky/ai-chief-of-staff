@@ -13,7 +13,7 @@ This doc covers each command in operating detail. What files it reads. What it w
 State in this system lives in four places.
 
 1. `Command Center.md`. Current priorities, week ahead, state check.
-2. `To-Do List.md`. Tasks by quadrant, with a waiting-for table auto-aggregated from tags.
+2. `To-Do.md`. Tasks by quadrant, with a waiting-for table auto-aggregated from tags.
 3. `.claude/memory/`. Persistent memory files. Covered in [`memory.md`](memory.md).
 4. Session logs. Append-only narrative record. One entry per `/wrap`.
 
@@ -25,7 +25,7 @@ That's the whole cycle. The commands are short. The state files carry the value.
 
 Opens every session.
 
-**Reads.** Four files in parallel. `Command Center.md` for current priorities. A session pointer (`_system/last_session.md` in my setup) that records when the last session was and what threads were open. A hot-context snapshot written by the previous `/wrap`, deliberately low-fidelity, used to recover in-progress state quickly. The to-do list.
+**Reads.** Four files in parallel. `Command Center.md` for current priorities. A session pointer (`_system/last_session.md` in my setup) that records when the last session was and what threads were open. A hot-context snapshot written by the previous `/wrap`, deliberately low-fidelity, used to recover in-progress state quickly. `To-Do.md`.
 
 If MCP servers are wired in: Gmail gets queried for unread human senders in the last two days, filtered to exclude promotional categories. Calendar gets queried for today's meetings. An optional semantic-search helper surfaces cross-domain vault connections that would otherwise get missed.
 

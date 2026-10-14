@@ -1,7 +1,6 @@
 ---
 name: start
 description: Morning briefing. Reads vault state, delivers Must/Should/Could briefing, flags overdue waiting-for items.
-user_invocable: true
 ---
 
 Morning briefing.

@@ -1,7 +1,6 @@
 ---
 name: wrap
 description: End of session. Reflects wins, updates Command Center, moves done tasks, writes to session log and memory.
-user_invocable: true
 ---
 
 End of session. Two phases.
