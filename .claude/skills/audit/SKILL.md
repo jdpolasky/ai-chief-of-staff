@@ -1,7 +1,6 @@
 ---
 name: audit
 description: Periodic integrity check. Reads memory, skills, vault state. Reports redundant rules, stale memories, broken links, drifted skills.
-user_invocable: true
 ---
 
 Periodic integrity check. Run roughly every 7 sessions, or whenever the briefing surfaces an audit-due flag.

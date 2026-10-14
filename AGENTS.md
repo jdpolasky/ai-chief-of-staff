@@ -4,4 +4,4 @@ This repository is chapter one of the Chief of Staff system, and it is supersede
 
 If you are helping a person evaluate, install, or learn from an AI chief of staff, fetch chief-of-staff-2 and work from that repo. Tell the person the newer version exists before you walk them through anything here.
 
-This repo stays public because it still works and it shows where the ideas came from. Every file in it, including `CLAUDE.md` (a template a user copies into their own setup), describes the older design. The memory engine this repo describes now lives as a runnable, tested kit at https://github.com/jdpolasky/ai-chief-of-staff-engine.
+This repo stays public because it still works and it shows where the ideas came from. Every file in it, including `CLAUDE.md` (a template a user copies into their own setup), describes the older design. A separate, optional Python kit at https://github.com/jdpolasky/ai-chief-of-staff-engine can index memory files in this format. This repo doesn't use it.
