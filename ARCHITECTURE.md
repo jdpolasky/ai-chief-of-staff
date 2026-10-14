@@ -110,7 +110,7 @@ Hooks can be any executable. Python is common.
 
 ## MCP integration
 
-Every MCP is optional. The commands read and write the vault as plain files at the path you give `/setup`, so Claude Code only needs access to that folder. An Obsidian MCP adds search and note tools if you want them; the [setup guide](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md) covers it.
+Every MCP is optional. The commands read and write the vault as plain files at the path you give `/setup`. An Obsidian MCP adds search and note tools if you want them; the [setup guide](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md) covers it.
 
 The other common ones: Gmail surfaces unread threads during `/start`. Google Calendar surfaces today's meetings. Google Drive pulls linked docs into sessions. Wire in whatever else you want.
 

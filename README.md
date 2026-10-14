@@ -30,7 +30,7 @@ This install needs a few free programs and one paid subscription. Don't worry if
 - Windows Command Prompt: `curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd`
 - Mac or Linux: `curl -fsSL https://claude.ai/install.sh | bash`
 
-When it finishes, open a new terminal window and run `claude --version` to confirm. A version number means it worked. Anthropic's [setup page](https://code.claude.com/docs/en/overview) has other install options and fixes if it doesn't.
+When it finishes, open a new terminal window and run `claude --version` to confirm. A version number means it worked. Anthropic's [setup page](https://code.claude.com/docs/en/setup) has other install options and fixes if it doesn't.
 
 **2. A paid Claude subscription.** Any paid tier works. Free accounts can't run Claude Code. If you already pay for Claude Pro or Max, you're set; the same login works.
 

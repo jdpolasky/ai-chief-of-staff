@@ -25,7 +25,7 @@ Three rules that prevent the most common failure modes.
 
 2. **Never seed the To-Do without confirmation.** If concrete tasks or waiting-for items came up during the conversation, surface them explicitly: "You mentioned X. Want me to add that to the Waiting For table / Do Now quadrant?" Only add after they say yes. Their To-Do is their list. Do not pre-populate on their behalf.
 
-3. **Conditional content gets appended, not uncommented.** A few templates carry short HTML comments that explain a section to the user. They hold no instructions for you. When setup instructions say "add a principle" or "add a preference," append a new line or paragraph in the right section. Don't go looking for placeholder blocks to toggle on.
+3. **Append conditional content instead of uncommenting it.** Two shipped files carry a short HTML comment that explains a section to the user. They hold no instructions for you. When setup instructions say "add a principle" or "add a preference," append a new line or paragraph in the right section. Don't go looking for placeholder blocks to toggle on.
 
 ## Step 0: Confirm the install
 
