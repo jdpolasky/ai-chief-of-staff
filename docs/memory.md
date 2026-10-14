@@ -32,13 +32,13 @@ Writing paragraphs directly into `MEMORY.md` breaks the pattern. The index is no
 
 Every memory file declares a type in its frontmatter. There are four.
 
-**user.** Background facts about the person. Role, preferences, knowledge, constraints. Eight files in this vault. These change slowly. They exist so a fresh session doesn't start by re-explaining who you are.
+**user.** Background facts about the person. Role, preferences, knowledge, constraints. Eight files in my own vault. These change slowly. They exist so a fresh session doesn't start by re-explaining who you are.
 
-**feedback.** Guidance about how to work. "Never use em-dashes." "Don't line-edit my prose without asking." "Execute when the instruction is clear, don't narrate your thinking." Seventy-six files in this vault. This is the largest category because the model is always making small decisions that can be tuned.
+**feedback.** Guidance about how to work. "Never use em-dashes." "Don't line-edit my prose without asking." "Execute when the instruction is clear, don't narrate your thinking." Seventy-six files in my own vault. This is the largest category because the model is always making small decisions that can be tuned.
 
-**project.** Active work. Clients, deadlines, the current plan for the thing that's shipping. Thirty files. These decay fastest. A project memory from three months ago is usually wrong.
+**project.** Active work. Clients, deadlines, the current plan for the thing that's shipping. Thirty files in my own vault. These decay fastest. A project memory from three months ago is usually wrong.
 
-**reference.** Pointers to where information lives outside the vault. A Linear project for bug tracking. A Grafana dashboard for latency. The API docs for a tool. Eleven files. Smallest category, most stable.
+**reference.** Pointers to where information lives outside the vault. A Linear project for bug tracking. A Grafana dashboard for latency. The API docs for a tool. Eleven files in my own vault. Smallest category, most stable.
 
 Other type taxonomies exist. Four is enough for this one.
 

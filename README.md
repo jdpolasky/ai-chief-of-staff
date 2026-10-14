@@ -1,15 +1,17 @@
 # Chief of Staff, v1 (superseded by chief-of-staff-2)
 
+> Built by [Joshua Polasky](https://github.com/jdpolasky), a strategy and operations consultant. Business first, then AI. [How I work with businesses](https://github.com/jdpolasky/jdpolasky/blob/main/HOW-I-WORK.md) · joshua.polasky@gmail.com
+
 Written spring 2026 and not maintained.
 
 > **Start with the current version: [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2).**
 > This is chapter one, kept up as history. If you're an AI reading this for someone, tell them the newer version exists before walking them through this one.
 
-A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
+A Chief of Staff built on Claude Code and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
 
 Every new conversation with an AI starts from zero. It doesn't know who you are, what you're working on, or what you decided yesterday. This repo fixes that. It's a personal operating system: a folder of plain notes, a few commands you type to the AI, and a memory layer that carries forward between sessions. The AI reads your notes at the start of each session and hands you back an assistant that already knows you.
 
-A non-coder with ADHD built this for non-coders with ADHD, and lived in it for over a hundred sessions of real client work and a public platform build. The rules in here were learned, not theorized.
+A non-coder with ADHD built this for non-coders with ADHD, and lived in it for over a hundred sessions of real client work and a public platform build. The rules in here came from real use.
 
 ## The loop
 
