@@ -40,7 +40,7 @@ See [Quickstart in the README](README.md#quickstart). Four questions get you a w
 
 ## Prerequisites
 
-- Claude Code installed (`claude.ai/code`)
+- Claude Code installed (see the README, 'Before you start')
 - Obsidian (free, `obsidian.md`) with a vault set up
 - A Claude subscription (any tier; Pro works)
 - Optional but recommended: Gmail, Google Calendar, Google Drive MCP connectors for briefing enrichment

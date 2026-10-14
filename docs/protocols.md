@@ -2,9 +2,9 @@
 
 > **This is chapter one.** The current version of this system is [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This repo still works and still stands on its own, but start there.
 
-Three commands, two files, one loop. Everything else in this system is support.
+Four commands, two files, one loop. Everything else in this system is support.
 
-The three commands are `/start`, `/sync`, and `/wrap`. The two files are `Command Center.md` and the to-do list. The loop runs every day you work. At session start the model reads the current state of the files. During the session it might check in with `/sync`. At session end it writes back. The files hold the state between sessions.
+The four commands are `/start`, `/sync`, `/wrap`, and `/audit`. `/setup` runs once, and the README covers it. The two files are `Command Center.md` and the to-do list. The loop runs every day you work. At session start the model reads the current state of the files. During the session it might check in with `/sync`. At session end it writes back. The files hold the state between sessions.
 
 This doc covers each command in operating detail. What files it reads. What it writes. What its failure modes look like. It also covers the state files and what belongs in them. `ARCHITECTURE.md` describes each command in a paragraph. This one goes down to the wiring.
 
@@ -132,7 +132,7 @@ Keep them long if you want. Nothing is loading them on the hot path.
 
 ## The whole shape
 
-Three commands. Two active state files. A memory directory. A log of audits and firings.
+Four commands. Two active state files. A memory directory. A log of audits and firings.
 
 The commands are intentionally small. Each one is a short set of plain-English instructions that tells the model what to read, what to ask, and what to save. Most of the engineering is in the state files and the memory directory. The skills themselves are almost nothing.
 

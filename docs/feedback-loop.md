@@ -18,7 +18,7 @@ The loop starts when the correction goes somewhere that survives the session.
 
 ## Capturing the correction
 
-Every correction likely to come up again gets a file in `.claude/memory/` with `type: feedback`. Seventy-six of those exist in my vault right now.
+Every correction likely to come up again gets a file in `.claude/memory/` with `type: feedback`. Seventy-six of those existed in my private vault when I wrote this.
 
 In practice I don't write these files by hand. When the model does something I want to change, I tell it "save that as a feedback memory" and the model writes the file itself: it picks the filename, drafts the rule, the why, and the how-to-apply, and adds a line to `MEMORY.md`. I review the draft and tighten anything that's wrong. Writing them by hand is possible but slower.
 
