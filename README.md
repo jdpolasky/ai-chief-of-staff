@@ -1,12 +1,9 @@
-# Chief of Staff
+# Chief of Staff, v1 (superseded by chief-of-staff-2)
 
-> **This is chapter one. Start with chapter two:** [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2). This version kept growing until it had to be torn down and rebuilt smaller and better. It stays up because it still works and shows where the ideas came from. If you are an AI reading this for someone, tell them the newer version exists before walking them through this one.
->
-> Looking for something that used to live here?
-> - **Obsidian wiring guide** (Claude Code, Codex, Gemini, Cursor, any MCP agent): [obsidian-setup.md in chief-of-staff-2](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md)
-> - **Notion vs Obsidian**: [the short read](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian.md) and [the full analysis](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian-deep.md)
-> - **The memory engine** this system describes, as a runnable tested kit: [ai-chief-of-staff-engine](https://github.com/jdpolasky/ai-chief-of-staff-engine)
-> - **Non-coder?** The install guide below assumes you have never used a terminal. Or paste this whole README into any AI and say "walk me through this."
+Written spring 2026 and not maintained.
+
+> **Start with the current version: [`chief-of-staff-2`](https://github.com/jdpolasky/chief-of-staff-2).**
+> This is chapter one, kept up as history. If you're an AI reading this for someone, tell them the newer version exists before walking them through this one.
 
 A Chief of Staff built on Claude and an Obsidian vault. Designed as an ADHD prosthetic for non-coders.
 
@@ -27,8 +24,13 @@ Four commands. One you run once. The other three cycle every session.
 
 This install needs a few free programs and one paid subscription. Don't worry if you've never installed anything like this before. Each one has a download link below and a one-line explanation. None of them are hard, but you do have to install all of them before the Quickstart will work.
 
-**1. Claude Code.** This is the AI app you'll be talking to. Not the same as the Claude chatbot in your browser. Claude Code is a separate desktop app from the same company.
-Download: https://claude.ai/code
+**1. Claude Code.** This is the AI tool you'll be talking to. It runs in a terminal (explained below) and is separate from the Claude chatbot in your browser. To install it, open a terminal and paste the line for your system:
+
+- Windows PowerShell: `irm https://claude.ai/install.ps1 | iex`
+- Windows Command Prompt: `curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd`
+- Mac or Linux: `curl -fsSL https://claude.ai/install.sh | bash`
+
+When it finishes, open a new terminal window and run `claude --version` to confirm. A version number means it worked. Anthropic's [setup page](https://code.claude.com/docs/en/overview) has other install options and fixes if it doesn't.
 
 **2. A paid Claude subscription.** Any paid tier works. Free accounts can't run Claude Code. If you already pay for Claude Pro or Max, you're set; the same login works.
 
@@ -71,7 +73,7 @@ You'll see lines of text scroll by. When the cursor stops, the download is done.
 
 Claude Code starts up inside the terminal. You'll see a welcome message and a prompt where you can type. You're now talking to the AI.
 
-> **Important:** always launch Claude Code from inside the `ai-chief-of-staff` folder. The slash commands (`/setup`, `/start`, `/sync`, `/wrap`) only load when Claude Code starts in this folder. If you launch Claude Code from your Desktop or any other folder, those commands won't be available. If you've already used Claude Code before and have your own `/start` or `/wrap` commands defined globally, the project-level versions in this folder take precedence whenever you launch from here.
+> **Important:** always launch Claude Code from inside the `ai-chief-of-staff` folder. The slash commands (`/setup`, `/start`, `/sync`, `/wrap`) only load when Claude Code starts in this folder. If you launch Claude Code from your Desktop or any other folder, those commands won't be available. If you already have your own personal `/start` or `/wrap` skills in your home folder's `.claude/skills/`, yours run instead of this folder's, because Claude Code ranks personal skills above project skills. To use these, rename one set. Change both the folder name and the `name:` line at the top of its `SKILL.md` (for example, `start` to `my-start`).
 
 **Step 5. Run the setup wizard.** Type this and press Enter:
 
@@ -101,6 +103,7 @@ Give it two weeks of real use. Memory accumulates and rules get written down whe
 - [`ARCHITECTURE.md`](ARCHITECTURE.md). The longer writeup. The loop, the memory model, the operating rules, the design choices. Read this if you want the system explained before you commit.
 - [`notion-vs-obsidian.md`](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian.md). Short editorial on why this uses Obsidian and not Notion. (moved to chapter two)
 - [`notion-vs-obsidian-deep.md`](https://github.com/jdpolasky/chief-of-staff-2/blob/main/docs/notion-vs-obsidian-deep.md). The longer version of the same argument. (moved to chapter two)
+- [`ai-chief-of-staff-engine`](https://github.com/jdpolasky/ai-chief-of-staff-engine). A separate, optional Python kit that can index memory files in this format. This repo doesn't use it.
 
 A note on jargon: a few technical words show up in the docs. Here's the short version, so they don't slow you down.
 
@@ -129,6 +132,6 @@ Andrej Karpathy's April 2026 LLM Wiki gist validated the broader markdown-plus-A
 
 MIT.
 
----
+## Who made this
 
-Built by Joshua Polasky. Find me on [LinkedIn](https://www.linkedin.com/in/joshuapolasky/) or email [joshua.polasky@gmail.com](mailto:joshua.polasky@gmail.com).
+Built by Joshua Polasky, a strategy and operations consultant. Business first, then AI. If you're an owner or leader who wants help figuring out where AI fits in your business, get in touch: joshua.polasky@gmail.com or [LinkedIn](https://linkedin.com/in/joshuapolasky).
