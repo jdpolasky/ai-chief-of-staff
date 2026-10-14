@@ -110,9 +110,9 @@ Hooks can be any executable. Python is common.
 
 ## MCP integration
 
-One MCP is required. [Obsidian MCP](obsidian-setup.md), because without it the system cannot reach the vault and `/start` has nothing to read.
+Every MCP is optional. The commands read and write the vault as plain files at the path you give `/setup`, so Claude Code only needs access to that folder. An Obsidian MCP adds search and note tools if you want them; the [setup guide](https://github.com/jdpolasky/chief-of-staff-2/blob/main/obsidian-setup.md) covers it.
 
-The rest are optional. Gmail surfaces unread threads during `/start`. Google Calendar surfaces today's meetings. Google Drive pulls linked docs into sessions. Wire in whatever else you want.
+The other common ones: Gmail surfaces unread threads during `/start`. Google Calendar surfaces today's meetings. Google Drive pulls linked docs into sessions. Wire in whatever else you want.
 
 The system is MCP-agnostic. The vault is the source of truth. MCPs are tentacles that reach out from it. Swap them. Add them. Drop them. The vault survives.
 
@@ -162,11 +162,17 @@ The template ships `settings.json` empty (`{}`). A minimal example that runs a P
 {
   "hooks": {
     "SessionStart": [
-      { "type": "command", "command": "python scripts/hooks/inject_date.py" }
+      {
+        "hooks": [
+          { "type": "command", "command": "python scripts/hooks/inject_date.py" }
+        ]
+      }
     ]
   }
 }
 ```
+
+This is the current format, where each event holds a list of groups and each group holds its own `hooks` list. Anthropic's [hooks reference](https://code.claude.com/docs/en/hooks) has the full schema. The chapter-one guide linked next predates this format, so check its examples against the reference before you copy them.
 
 See Layer 5 of the [chapter-one version of `obsidian-setup.md`](https://github.com/jdpolasky/ai-chief-of-staff/blob/bb80387c6aed458e62348df26df92ec853f046fc/obsidian-setup.md#layer-5-python-hook-layer) for more examples and the events Claude Code exposes. That guide has since been rewritten for chapter two, and the new version doesn't cover hooks.
 
@@ -193,9 +199,7 @@ This started in early 2024 with me building and using custom GPTs. They were a s
 
 By late summer 2025 I had a name for the pattern I was reaching for: RAG. RAG, Retrieval-Augmented Generation, is the canonical name for what this whole system does. Store knowledge locally and let the model query it on demand. Ground every answer in your own notes instead of the model's general training. By September 2025 I'd evolved a playbook: save chats to Obsidian then cut/paste them into ChatGPT to provide context. This worked but was clunky. The problem was tooling, I couldn't bring it all together. I tried using n8n to connect ChatGPT to Obsidian, but was way over my head and ChatGPT couldn't walk me through it. Node names changed under me, webhooks failed, and file paths broke, I was just flailing around. So, I stayed in custom GPTs and kept pasting in markdown files for context. 
 
-One of my GPTs was a therapist and it exceeded my expectations. I made it Internal Family Systems (IFS) and somatics flavored, ADHD-aware. It uncovered patterns and insights human therapists hadn't. It was the first time any of this technology felt like it was actually in the room with me.
-
-In early 2026 I came back to the 2nd Brain problem, this time in Claude Code. I have zero coding background, but with Claude that didn't matter. I was able to attach Obsidian and make it function smoothly as extended memory. I moved the therapist over from GPT and with the vault attached it worked even better. Everything else evolved out of that: the Command Center, the Chief of Staff role, the memory tier, and the Laws. The nervous-system-aware framing in the operating principles comes from a skill that was already running against my actual life.
+In early 2026 I came back to the 2nd Brain problem, this time in Claude Code. I have zero coding background, but with Claude that didn't matter. I was able to attach Obsidian and make it function smoothly as extended memory. Everything else evolved out of that: the Command Center, the Chief of Staff role, the memory tier, and the Laws.
 
 In early April 2026 Andrej Karpathy posted a gist titled "LLM Wiki", a markdown folder maintained by a model, framed as a personal knowledge base written for an LLM reader. It went viral on X. My quest had been validated.
 

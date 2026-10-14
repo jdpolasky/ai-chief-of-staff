@@ -42,8 +42,6 @@ Retrieval-Augmented Generation (RAG) is the canonical name for the architectural
 
 The operating principles borrow language from Internal Family Systems (IFS) therapy, which predates this project and is not owned by me. Any "part," "Self," "firefighter," or related vocabulary in memory files or skills can be traced to Richard Schwartz's IFS work.
 
-The nervous-system-aware framing came into this project through a custom GPT therapist I built in 2024 and later ported into Claude Code. That skill was the first working piece, and the rest of the system grew outward from it. See the Lineage section of [ARCHITECTURE.md](ARCHITECTURE.md) for the full sequence.
-
 The Eisenhower Matrix (four quadrants of urgent × important) is public domain and used here as a common reference, not a claimed contribution.
 
 ## How this file is maintained

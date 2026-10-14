@@ -20,7 +20,7 @@ Closing the gap with a pause is free. The model gets one extra round trip to con
 
 Before stating a fact about your life, your work, or your history, the model reads the relevant memory file. If the fact isn't on file, the model says so and asks, rather than inventing.
 
-The rule has a clean test. If the model can't name the source of a claim, the claim doesn't go in the response. "Per your professional profile, you have a JD and an MBA." "I don't have that on file." Those are the two acceptable outputs. There is no third one where the model takes a confident guess.
+The rule has a clean test. If the model can't name the source of a claim, the claim doesn't go in the response. "Per your professional profile, you hold a nursing license." "I don't have that on file." Those are the two acceptable outputs. There is no third one where the model takes a confident guess.
 
 This rule exists because the whole value of a persistent-memory system depends on the memory being trustworthy. One fabrication and you have to double-check every claim after it. At that point you don't have a memory system, you have a second source of facts that you verify against the first one. The rule costs nothing to follow and keeps the system usable.
 
