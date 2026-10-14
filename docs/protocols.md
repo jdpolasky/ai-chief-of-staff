@@ -4,7 +4,7 @@
 
 Four commands, two files, one loop. Everything else in this system is support.
 
-The four commands are `/start`, `/sync`, `/wrap`, and `/audit`. The two files are `Command Center.md` and the to-do list. The loop runs every day you work. At session start the model reads the current state of the files. During the session it might check in with `/sync`. At session end it writes back. The files hold the state between sessions.
+The four commands are `/start`, `/sync`, `/wrap`, and `/audit`. `/setup` runs once, and the README covers it. The two files are `Command Center.md` and the to-do list. The loop runs every day you work. At session start the model reads the current state of the files. During the session it might check in with `/sync`. At session end it writes back. The files hold the state between sessions.
 
 This doc covers each command in operating detail. What files it reads. What it writes. What its failure modes look like. It also covers the state files and what belongs in them. `ARCHITECTURE.md` describes each command in a paragraph. This one goes down to the wiring.
 

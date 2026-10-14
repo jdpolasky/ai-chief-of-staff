@@ -15,12 +15,13 @@ A non-coder with ADHD built this for non-coders with ADHD, and lived in it for o
 
 ## The loop
 
-Four commands. One you run once. The other three cycle every session.
+Five commands. One you run once, three that cycle every session, and one periodic check.
 
 - **`/setup`**. A guided wizard. Asks about you, your priorities, how you stall, what has actually helped you before. Builds the system in about ten minutes.
 - **`/start`**. Morning briefing. The AI reads your notes and hands you a Must / Should / Could plan. If you've connected your email and calendar, it surfaces today's events and unread messages too.
 - **`/sync`**. Mid-session checkpoint. Saves what matters. Optional.
 - **`/wrap`**. End of session. Reflects on wins, updates your notes, queues what's still open for next time.
+- **`/audit`**. A periodic integrity check, roughly every seven sessions. Reports redundant rules, stale memories, broken links, and drifted skills.
 
 ## Before you start
 
